@@ -14,5 +14,5 @@ enum FeeStatus: string
             'value' => $item->value,
             'label' => $item->value,
         ])->values()->toArray();
-    }
+    }       
 }

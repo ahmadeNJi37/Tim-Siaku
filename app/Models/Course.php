@@ -29,6 +29,11 @@ class Course extends Model
         return $this->belongsTo(related: Department::class);
     }
 
+    public function teacher(): BelongsTo
+    {
+        return $this->belongsTo(related: Teacher::class);
+    }
+
     public function academicYear(): BelongsTo
     {
         return $this->belongsTo(related: AcademicYear::class);

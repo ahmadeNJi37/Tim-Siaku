@@ -3,26 +3,26 @@ import { Popover, PopoverTrigger, PopoverContent } from "@/Components/Ui/Popover
 import { Button } from "@/Component/Ui/Button";
 import { IconCaretDown, IconCheck } from "@tabler/icons-react";
 import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup } from "@/Component/ui/command";
-import { CommandItem } from "./ui/command";
+import { CommandItem } from "@/Component/ui/command";
 
 export default function ComboBox({ items, selectedItem, onSelect, placeholder = 'pilih item...' }) {
     const [open, setOpen] = useState(false);
     const handleSelect = (value) => {
         onSelect(value);
         setOpen(false);
-    };
+    }
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
                 <Button
-                    variant='outline'
+                    variant='outline' 
                     role='combobox'
-                    aria-expanded={open}
+                    ariaExpanded={open}
                     className='justify-between w-full'
                     size='xl'
                 >
-                    {items.find((item) => item.label === selectedItem)?.label ?? placeholder}
+                    {items.find((item) => item.label == selectedItem)?.label ?? placeholder}
                     <IconCaretDown className="size-4 ml-2 opacity-50 shrink-0" />
                 </Button>
             </PopoverTrigger>
@@ -51,5 +51,5 @@ export default function ComboBox({ items, selectedItem, onSelect, placeholder = 
                 </Command>
             </PopoverContent>
         </Popover>
-    );
+    )
 }

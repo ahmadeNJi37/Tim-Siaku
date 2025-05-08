@@ -9,5 +9,5 @@ export default function EmptyState({
             <h3 className="mt-2 text-lg font-semibold text-foreground">{title}</h3>
             <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>
         </div>
-    );
+    )
 }

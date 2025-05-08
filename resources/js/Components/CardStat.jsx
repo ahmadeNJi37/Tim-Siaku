@@ -1,4 +1,5 @@
-import { Card, CardHeader, CardTitle, CardContent } from "./ui/card"
+import { Card, CardHeader, CardTitle, CardContent } from "@/Components/ui/card"
+import { cn } from "@/lib/utils"
 
 export default function CardStat({ data, children }) {
     const { title, background, className = '', icon: Icon, iconClassName = '' } = data

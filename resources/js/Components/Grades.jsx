@@ -10,7 +10,7 @@ export default function Grades({ studyResult, grades, name = null }) {
                 <Button variant="purple" size="sm">
                     <IconEye className="size-4 text-white" />
                 </Button>
-            </SheetTrigger>
+            </SheetTrigger> 
             <SheetContent side="top">
                 <SheetHeader>
                     <SheetTitle>Detail Kartu Hasil Studi Mahasiswa {name}</SheetTitle>
@@ -45,13 +45,12 @@ export default function Grades({ studyResult, grades, name = null }) {
                         <TableRow>
                             <TableCell colSpan="3">IP SEMESTER</TableCell>
                             <TableCell className="border">{studyResult.gpa}</TableCell>
-                            <TableCell className="border" />
-                            <TableCell className="border" />
-                            <TableCell className="border" />
+                            <TableCell className="border"></TableCell>
+                            <TableCell className="border"></TableCell>
                         </TableRow>
                     </TableFooter>
                 </Table>
             </SheetContent>
         </Sheet>
-    );
+    )
 }

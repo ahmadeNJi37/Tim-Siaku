@@ -1,7 +1,7 @@
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/Components/ui/sheet";
-import { Button } from "@/Components/ui/button";
-import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@/Components/ui/table";
-import { IconEye } from "@tabler/icons-react";
+import { Button } from '@/Components/ui/button';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/Components/ui/sheet';
+import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from '@/Components/ui/table';
+import { IconEye } from '@tabler/icons-react';
 
 export default function Grades({ studyResult, grades, name = null }) {
     return (
@@ -10,7 +10,7 @@ export default function Grades({ studyResult, grades, name = null }) {
                 <Button variant="purple" size="sm">
                     <IconEye className="size-4 text-white" />
                 </Button>
-            </SheetTrigger> 
+            </SheetTrigger>
             <SheetContent side="top">
                 <SheetHeader>
                     <SheetTitle>Detail Kartu Hasil Studi Mahasiswa {name}</SheetTitle>
@@ -52,5 +52,5 @@ export default function Grades({ studyResult, grades, name = null }) {
                 </Table>
             </SheetContent>
         </Sheet>
-    )
+    );
 }

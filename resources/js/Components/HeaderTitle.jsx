@@ -7,5 +7,5 @@ export default function HeaderTitle({ title, subtitle, icon: Icon }) {
             </div>
             <p className="text-sm font-medium text-muted-foreground">{subtitle}</p>
         </div>
-    )
+    );
 }

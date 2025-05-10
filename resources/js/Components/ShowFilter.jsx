@@ -1,7 +1,7 @@
-import { cn } from "@/lib/utils";
-import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
-import { IconFilter } from "@tabler/icons-react";
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { cn } from '@/lib/utils';
+import { IconFilter } from '@tabler/icons-react';
 
 export default function ShowFilter({ params, className = '' }) {
     return (
@@ -12,17 +12,17 @@ export default function ShowFilter({ params, className = '' }) {
                         <IconFilter className="size-4" />
                         Filters:
                     </span>
-                    <Separator orientation='vertical' className='h-6 mx-2' />
+                    <Separator orientation="vertical" className="mx-2 h-6" />
                     {Object.entries(params).map(
                         ([key, value]) =>
                             value && (
-                                <Badge key={index} variant='white' className='mr-2'>
+                                <Badge key={index} variant="white" className="mr-2">
                                     {key.charAt(0).toUpperCase() + key.slice(1)} : {value}
                                 </Badge>
-                            )
+                            ),
                     )}
                 </div>
             )}
         </div>
-    )
+    );
 }

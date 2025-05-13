@@ -92,7 +92,7 @@ export default function Sidebar({ url }) {
 
                 <div className="px-5 py-3 text-xs font-medium text-white">Lainnya</div>
 
-                <NavLink url="#" active={url.startsWith('/logout')} title="Logout" icon={IconLogout2} />
+                <NavLink url={route('logout')} method='post' as='button' active={url.startsWith('/logout')} title="Logout" icon={IconLogout2} />
             </ul>
         </nav>
     );

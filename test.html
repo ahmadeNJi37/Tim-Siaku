@@ -1,0 +1,237 @@
+Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+chunk-NXESFFTV.js?v=11f2ff58:521 Warning: validateDOMNesting(...): <a> cannot appear as a descendant of <a>.
+    at a
+    at http://[::1]:5173/node_modules/.vite/deps/@inertiajs_react.js?v=11f2ff58:4717:54
+    at ApplicationLogo (http://[::1]:5173/resources/js/Components/ApplicationLogo.jsx:20:43)
+    at a
+    at http://[::1]:5173/node_modules/.vite/deps/@inertiajs_react.js?v=11f2ff58:4717:54
+    at div
+    at div
+    at div
+    at div
+    at nav
+    at div
+    at AuthenticatedLayout (http://[::1]:5173/resources/js/Layouts/AuthenticatedLayout.jsx?t=1746955281203:24:47)
+    at Dashboard
+    at _ (http://[::1]:5173/node_modules/.vite/deps/@inertiajs_react.js?v=11f2ff58:4635:24)
+printWarning @ chunk-NXESFFTV.js?v=11f2ff58:521
+error @ chunk-NXESFFTV.js?v=11f2ff58:505
+validateDOMNesting @ chunk-NXESFFTV.js?v=11f2ff58:8303
+createInstance @ chunk-NXESFFTV.js?v=11f2ff58:8375
+completeWork @ chunk-NXESFFTV.js?v=11f2ff58:16338
+completeUnitOfWork @ chunk-NXESFFTV.js?v=11f2ff58:19277
+performUnitOfWork @ chunk-NXESFFTV.js?v=11f2ff58:19259
+workLoopSync @ chunk-NXESFFTV.js?v=11f2ff58:19190
+renderRootSync @ chunk-NXESFFTV.js?v=11f2ff58:19169
+performConcurrentWorkOnRoot @ chunk-NXESFFTV.js?v=11f2ff58:18728
+workLoop @ chunk-NXESFFTV.js?v=11f2ff58:197
+flushWork @ chunk-NXESFFTV.js?v=11f2ff58:176
+performWorkUntilDeadline @ chunk-NXESFFTV.js?v=11f2ff58:384Understand this error
+NavLink.jsx:16 Warning: React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check your code at NavLink.jsx:35.
+    at NavLink (http://[::1]:5173/resources/js/Components/NavLink.jsx?t=1746955281203:19:35)
+    at div
+    at div
+    at div
+    at div
+    at nav
+    at div
+    at AuthenticatedLayout (http://[::1]:5173/resources/js/Layouts/AuthenticatedLayout.jsx?t=1746955281203:24:47)
+    at Dashboard
+    at _ (http://[::1]:5173/node_modules/.vite/deps/@inertiajs_react.js?v=11f2ff58:4635:24)
+printWarning @ react_jsx-dev-runtime.js?v=11f2ff58:64
+error @ react_jsx-dev-runtime.js?v=11f2ff58:48
+jsxWithValidation @ react_jsx-dev-runtime.js?v=11f2ff58:834
+NavLink @ NavLink.jsx:16
+renderWithHooks @ chunk-NXESFFTV.js?v=11f2ff58:11596
+mountIndeterminateComponent @ chunk-NXESFFTV.js?v=11f2ff58:14974
+beginWork @ chunk-NXESFFTV.js?v=11f2ff58:15962
+beginWork$1 @ chunk-NXESFFTV.js?v=11f2ff58:19806
+performUnitOfWork @ chunk-NXESFFTV.js?v=11f2ff58:19251
+workLoopSync @ chunk-NXESFFTV.js?v=11f2ff58:19190
+renderRootSync @ chunk-NXESFFTV.js?v=11f2ff58:19169
+performConcurrentWorkOnRoot @ chunk-NXESFFTV.js?v=11f2ff58:18728
+workLoop @ chunk-NXESFFTV.js?v=11f2ff58:197
+flushWork @ chunk-NXESFFTV.js?v=11f2ff58:176
+performWorkUntilDeadline @ chunk-NXESFFTV.js?v=11f2ff58:384Understand this error
+chunk-NXESFFTV.js?v=11f2ff58:20500 Uncaught Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of NavLink.
+    at createFiberFromTypeAndProps (chunk-NXESFFTV.js?v=11f2ff58:20500:23)
+    at createFiberFromElement (chunk-NXESFFTV.js?v=11f2ff58:20521:23)
+    at createChild (chunk-NXESFFTV.js?v=11f2ff58:10136:34)
+    at reconcileChildrenArray (chunk-NXESFFTV.js?v=11f2ff58:10329:33)
+    at reconcileChildFibers2 (chunk-NXESFFTV.js?v=11f2ff58:10606:24)
+    at reconcileChildren (chunk-NXESFFTV.js?v=11f2ff58:14338:37)
+    at updateHostComponent (chunk-NXESFFTV.js?v=11f2ff58:14855:11)
+    at beginWork (chunk-NXESFFTV.js?v=11f2ff58:15983:22)
+    at HTMLUnknownElement.callCallback2 (chunk-NXESFFTV.js?v=11f2ff58:3680:22)
+    at Object.invokeGuardedCallbackDev (chunk-NXESFFTV.js?v=11f2ff58:3705:24)
+createFiberFromTypeAndProps @ chunk-NXESFFTV.js?v=11f2ff58:20500
+createFiberFromElement @ chunk-NXESFFTV.js?v=11f2ff58:20521
+createChild @ chunk-NXESFFTV.js?v=11f2ff58:10136
+reconcileChildrenArray @ chunk-NXESFFTV.js?v=11f2ff58:10329
+reconcileChildFibers2 @ chunk-NXESFFTV.js?v=11f2ff58:10606
+reconcileChildren @ chunk-NXESFFTV.js?v=11f2ff58:14338
+updateHostComponent @ chunk-NXESFFTV.js?v=11f2ff58:14855
+beginWork @ chunk-NXESFFTV.js?v=11f2ff58:15983
+callCallback2 @ chunk-NXESFFTV.js?v=11f2ff58:3680
+invokeGuardedCallbackDev @ chunk-NXESFFTV.js?v=11f2ff58:3705
+invokeGuardedCallback @ chunk-NXESFFTV.js?v=11f2ff58:3739
+beginWork$1 @ chunk-NXESFFTV.js?v=11f2ff58:19818
+performUnitOfWork @ chunk-NXESFFTV.js?v=11f2ff58:19251
+workLoopSync @ chunk-NXESFFTV.js?v=11f2ff58:19190
+renderRootSync @ chunk-NXESFFTV.js?v=11f2ff58:19169
+performConcurrentWorkOnRoot @ chunk-NXESFFTV.js?v=11f2ff58:18728
+workLoop @ chunk-NXESFFTV.js?v=11f2ff58:197
+flushWork @ chunk-NXESFFTV.js?v=11f2ff58:176
+performWorkUntilDeadline @ chunk-NXESFFTV.js?v=11f2ff58:384Understand this error
+NavLink.jsx:16 Warning: React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check your code at NavLink.jsx:35.
+    at NavLink (http://[::1]:5173/resources/js/Components/NavLink.jsx?t=1746955281203:19:35)
+    at div
+    at div
+    at div
+    at div
+    at nav
+    at div
+    at AuthenticatedLayout (http://[::1]:5173/resources/js/Layouts/AuthenticatedLayout.jsx?t=1746955281203:24:47)
+    at Dashboard
+    at _ (http://[::1]:5173/node_modules/.vite/deps/@inertiajs_react.js?v=11f2ff58:4635:24)
+printWarning @ react_jsx-dev-runtime.js?v=11f2ff58:64
+error @ react_jsx-dev-runtime.js?v=11f2ff58:48
+jsxWithValidation @ react_jsx-dev-runtime.js?v=11f2ff58:834
+NavLink @ NavLink.jsx:16
+renderWithHooks @ chunk-NXESFFTV.js?v=11f2ff58:11596
+mountIndeterminateComponent @ chunk-NXESFFTV.js?v=11f2ff58:14974
+beginWork @ chunk-NXESFFTV.js?v=11f2ff58:15962
+beginWork$1 @ chunk-NXESFFTV.js?v=11f2ff58:19806
+performUnitOfWork @ chunk-NXESFFTV.js?v=11f2ff58:19251
+workLoopSync @ chunk-NXESFFTV.js?v=11f2ff58:19190
+renderRootSync @ chunk-NXESFFTV.js?v=11f2ff58:19169
+recoverFromConcurrentError @ chunk-NXESFFTV.js?v=11f2ff58:18786
+performConcurrentWorkOnRoot @ chunk-NXESFFTV.js?v=11f2ff58:18734
+workLoop @ chunk-NXESFFTV.js?v=11f2ff58:197
+flushWork @ chunk-NXESFFTV.js?v=11f2ff58:176
+performWorkUntilDeadline @ chunk-NXESFFTV.js?v=11f2ff58:384Understand this error
+chunk-NXESFFTV.js?v=11f2ff58:20500 Uncaught Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of NavLink.
+    at createFiberFromTypeAndProps (chunk-NXESFFTV.js?v=11f2ff58:20500:23)
+    at createFiberFromElement (chunk-NXESFFTV.js?v=11f2ff58:20521:23)
+    at createChild (chunk-NXESFFTV.js?v=11f2ff58:10136:34)
+    at reconcileChildrenArray (chunk-NXESFFTV.js?v=11f2ff58:10329:33)
+    at reconcileChildFibers2 (chunk-NXESFFTV.js?v=11f2ff58:10606:24)
+    at reconcileChildren (chunk-NXESFFTV.js?v=11f2ff58:14338:37)
+    at updateHostComponent (chunk-NXESFFTV.js?v=11f2ff58:14855:11)
+    at beginWork (chunk-NXESFFTV.js?v=11f2ff58:15983:22)
+    at HTMLUnknownElement.callCallback2 (chunk-NXESFFTV.js?v=11f2ff58:3680:22)
+    at Object.invokeGuardedCallbackDev (chunk-NXESFFTV.js?v=11f2ff58:3705:24)
+createFiberFromTypeAndProps @ chunk-NXESFFTV.js?v=11f2ff58:20500
+createFiberFromElement @ chunk-NXESFFTV.js?v=11f2ff58:20521
+createChild @ chunk-NXESFFTV.js?v=11f2ff58:10136
+reconcileChildrenArray @ chunk-NXESFFTV.js?v=11f2ff58:10329
+reconcileChildFibers2 @ chunk-NXESFFTV.js?v=11f2ff58:10606
+reconcileChildren @ chunk-NXESFFTV.js?v=11f2ff58:14338
+updateHostComponent @ chunk-NXESFFTV.js?v=11f2ff58:14855
+beginWork @ chunk-NXESFFTV.js?v=11f2ff58:15983
+callCallback2 @ chunk-NXESFFTV.js?v=11f2ff58:3680
+invokeGuardedCallbackDev @ chunk-NXESFFTV.js?v=11f2ff58:3705
+invokeGuardedCallback @ chunk-NXESFFTV.js?v=11f2ff58:3739
+beginWork$1 @ chunk-NXESFFTV.js?v=11f2ff58:19818
+performUnitOfWork @ chunk-NXESFFTV.js?v=11f2ff58:19251
+workLoopSync @ chunk-NXESFFTV.js?v=11f2ff58:19190
+renderRootSync @ chunk-NXESFFTV.js?v=11f2ff58:19169
+recoverFromConcurrentError @ chunk-NXESFFTV.js?v=11f2ff58:18786
+performConcurrentWorkOnRoot @ chunk-NXESFFTV.js?v=11f2ff58:18734
+workLoop @ chunk-NXESFFTV.js?v=11f2ff58:197
+flushWork @ chunk-NXESFFTV.js?v=11f2ff58:176
+performWorkUntilDeadline @ chunk-NXESFFTV.js?v=11f2ff58:384Understand this error
+chunk-NXESFFTV.js?v=11f2ff58:14080 The above error occurred in the <a> component:
+
+    at a
+    at http://[::1]:5173/node_modules/.vite/deps/@inertiajs_react.js?v=11f2ff58:4717:54
+    at li
+    at NavLink (http://[::1]:5173/resources/js/Components/NavLink.jsx?t=1746955281203:19:35)
+    at div
+    at div
+    at div
+    at div
+    at nav
+    at div
+    at AuthenticatedLayout (http://[::1]:5173/resources/js/Layouts/AuthenticatedLayout.jsx?t=1746955281203:24:47)
+    at Dashboard
+    at _ (http://[::1]:5173/node_modules/.vite/deps/@inertiajs_react.js?v=11f2ff58:4635:24)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+logCapturedError @ chunk-NXESFFTV.js?v=11f2ff58:14080
+update.callback @ chunk-NXESFFTV.js?v=11f2ff58:14100
+callCallback @ chunk-NXESFFTV.js?v=11f2ff58:11296
+commitUpdateQueue @ chunk-NXESFFTV.js?v=11f2ff58:11313
+commitLayoutEffectOnFiber @ chunk-NXESFFTV.js?v=11f2ff58:17141
+commitLayoutMountEffects_complete @ chunk-NXESFFTV.js?v=11f2ff58:18030
+commitLayoutEffects_begin @ chunk-NXESFFTV.js?v=11f2ff58:18019
+commitLayoutEffects @ chunk-NXESFFTV.js?v=11f2ff58:17970
+commitRootImpl @ chunk-NXESFFTV.js?v=11f2ff58:19406
+commitRoot @ chunk-NXESFFTV.js?v=11f2ff58:19330
+finishConcurrentRender @ chunk-NXESFFTV.js?v=11f2ff58:18813
+performConcurrentWorkOnRoot @ chunk-NXESFFTV.js?v=11f2ff58:18768
+workLoop @ chunk-NXESFFTV.js?v=11f2ff58:197
+flushWork @ chunk-NXESFFTV.js?v=11f2ff58:176
+performWorkUntilDeadline @ chunk-NXESFFTV.js?v=11f2ff58:384Understand this error
+chunk-NXESFFTV.js?v=11f2ff58:20500 Uncaught Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of NavLink.
+    at createFiberFromTypeAndProps (chunk-NXESFFTV.js?v=11f2ff58:20500:23)
+    at createFiberFromElement (chunk-NXESFFTV.js?v=11f2ff58:20521:23)
+    at createChild (chunk-NXESFFTV.js?v=11f2ff58:10136:34)
+    at reconcileChildrenArray (chunk-NXESFFTV.js?v=11f2ff58:10329:33)
+    at reconcileChildFibers2 (chunk-NXESFFTV.js?v=11f2ff58:10606:24)
+    at reconcileChildren (chunk-NXESFFTV.js?v=11f2ff58:14338:37)
+    at updateHostComponent (chunk-NXESFFTV.js?v=11f2ff58:14855:11)
+    at beginWork (chunk-NXESFFTV.js?v=11f2ff58:15983:22)
+    at beginWork$1 (chunk-NXESFFTV.js?v=11f2ff58:19806:22)
+    at performUnitOfWork (chunk-NXESFFTV.js?v=11f2ff58:19251:20)
+createFiberFromTypeAndProps @ chunk-NXESFFTV.js?v=11f2ff58:20500
+createFiberFromElement @ chunk-NXESFFTV.js?v=11f2ff58:20521
+createChild @ chunk-NXESFFTV.js?v=11f2ff58:10136
+reconcileChildrenArray @ chunk-NXESFFTV.js?v=11f2ff58:10329
+reconcileChildFibers2 @ chunk-NXESFFTV.js?v=11f2ff58:10606
+reconcileChildren @ chunk-NXESFFTV.js?v=11f2ff58:14338
+updateHostComponent @ chunk-NXESFFTV.js?v=11f2ff58:14855
+beginWork @ chunk-NXESFFTV.js?v=11f2ff58:15983
+beginWork$1 @ chunk-NXESFFTV.js?v=11f2ff58:19806
+performUnitOfWork @ chunk-NXESFFTV.js?v=11f2ff58:19251
+workLoopSync @ chunk-NXESFFTV.js?v=11f2ff58:19190
+renderRootSync @ chunk-NXESFFTV.js?v=11f2ff58:19169
+recoverFromConcurrentError @ chunk-NXESFFTV.js?v=11f2ff58:18786
+performConcurrentWorkOnRoot @ chunk-NXESFFTV.js?v=11f2ff58:18734
+workLoop @ chunk-NXESFFTV.js?v=11f2ff58:197
+flushWork @ chunk-NXESFFTV.js?v=11f2ff58:176
+performWorkUntilDeadline @ chunk-NXESFFTV.js?v=11f2ff58:384Understand this error
+
+
+import { cn } from '@/lib/utils';
+import { Link } from '@inertiajs/react';
+
+export default function NavLink({ active = false, url = '#', title, icon: Icon, ...props }) {
+    return (
+        <li className='list-none'>
+            <Link
+                {...props}
+                href={url}
+                className={cn(
+                    active ? 'bg-blue-800' : 'hover:bg-blue-800',
+                    'mx-4 flex items-center gap-3 rounded-lg p-3 font-medium text-white transition-all',
+                    props.className,
+                )}
+            >
+                <Icon className="size-6" />
+                {title}
+            </Link>
+        </li>
+    );
+}

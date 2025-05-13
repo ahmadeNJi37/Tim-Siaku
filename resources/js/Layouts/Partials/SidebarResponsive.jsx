@@ -61,7 +61,7 @@ export default function SidebarResponsive({ url }) {
 
             <div className="px-5 py-3 text-xs font-large text-white">Lainnya</div>
 
-            <NavLink url="#" active={url.startsWith('/logout')} title="Logout" icon={IconLogout2} />
+            <NavLink url={route('logout')} method='post' as='button' active={url.startsWith('/logout')} title="Logout" icon={IconLogout2} />
         </nav>
     );
 }

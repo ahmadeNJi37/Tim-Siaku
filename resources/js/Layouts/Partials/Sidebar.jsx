@@ -13,10 +13,8 @@ import {
     IconLogout2,
     IconMoneybag,
     IconSchool,
-    IconUser,
     IconUserCog,
     IconUserPentagon,
-    IconUsers,
     IconUsersGroup,
 } from '@tabler/icons-react';
 
@@ -27,7 +25,7 @@ export default function Sidebar({ url }) {
                 <li className="">
                     <Link
                         href="#"
-                        className="flex items-center gap-x-4 p-3 mb-2 text-sm font-semibold leading-6 text-white hover:bg-blue-800"
+                        className="mb-2 flex items-center gap-x-4 p-3 text-sm font-semibold leading-6 text-white hover:bg-blue-800"
                     >
                         <Avatar>
                             <AvatarFallback>x</AvatarFallback>
@@ -92,7 +90,14 @@ export default function Sidebar({ url }) {
 
                 <div className="px-5 py-3 text-xs font-medium text-white">Lainnya</div>
 
-                <NavLink url={route('logout')} method='post' as='button' active={url.startsWith('/logout')} title="Logout" icon={IconLogout2} />
+                <NavLink
+                    url={route('logout')}
+                    method="post"
+                    as="button"
+                    active={url.startsWith('/logout')}
+                    title="Logout"
+                    icon={IconLogout2}
+                />
             </ul>
         </nav>
     );

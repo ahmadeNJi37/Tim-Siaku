@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
+use Spatie\Permission\Traits\HasRoles;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -34,13 +35,13 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
        if((auth()->user()->hasRole('Admin'))) {
-         return redirect()->intended(route('admin.dashboard', absolute: false));
-       } else if((auth()->user()->hasRole('Student'))) {
-         return redirect()->intended(route('students.dashboard', absolute: false));
-       } else if((auth()->user()->hasRole('Teacher'))) {
-         return redirect()->intended(route('teachers.dashboard', absolute: false));
-       } else if((auth()->user()->hasRole('Operator'))) {
-         return redirect()->intended(route('operators.dashboard', absolute: false));
+         return redirect()->intended(route('admin.dashboard', false));
+       } elseif((auth()->user()->hasRole('Student'))) {
+         return redirect()->intended(route('students.dashboard', false));
+       } elseif((auth()->user()->hasRole('Teacher'))) {
+         return redirect()->intended(route('teachers.dashboard', false));
+       } elseif((auth()->user()->hasRole('Operator'))) {
+         return redirect()->intended(route('operators.dashboard', false));
        }
     }
 

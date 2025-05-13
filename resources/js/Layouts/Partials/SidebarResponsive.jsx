@@ -11,10 +11,8 @@ import {
     IconLogout2,
     IconMoneybag,
     IconSchool,
-    IconUser,
     IconUserCog,
     IconUserPentagon,
-    IconUsers,
     IconUsersGroup,
 } from '@tabler/icons-react';
 
@@ -25,7 +23,7 @@ export default function SidebarResponsive({ url }) {
 
             <NavLink url="#" active={url.startsWith('/admin/dashboard')} title="Dashboard" icon={IconLayout2} />
 
-            <div className="px-5 py-3 text-xs font-large text-white">Master</div>
+            <div className="font-large px-5 py-3 text-xs text-white">Master</div>
 
             <NavLink
                 url="#"
@@ -43,25 +41,32 @@ export default function SidebarResponsive({ url }) {
             <NavLink url="#" active={url.startsWith('/admin/classrooms')} title="Kelas" icon={IconDoor} />
             <NavLink url="#" active={url.startsWith('/admin/roles')} title="Peran" icon={IconCircleKey} />
 
-            <div className="px-5 py-3 text-xs font-large text-white">Pengguna</div>
+            <div className="font-large px-5 py-3 text-xs text-white">Pengguna</div>
 
             <NavLink url="#" active={url.startsWith('/admin/students')} title="Mahasiswa" icon={IconUserPentagon} />
             <NavLink url="#" active={url.startsWith('/admin/teachers')} title="Dosen" icon={IconUsersGroup} />
             <NavLink url="#" active={url.startsWith('/admin/operators')} title="Operator" icon={IconUserCog} />
 
-            <div className="px-5 py-3 text-xs font-large text-white">Akademik</div>
+            <div className="font-large px-5 py-3 text-xs text-white">Akademik</div>
 
             <NavLink url="#" active={url.startsWith('/admin/courses')} title="Mata Kuliah" icon={IconBooks} />
             <NavLink url="#" active={url.startsWith('/admin/schedules')} title="Jadwal" icon={IconCalendar} />
 
-            <div className="px-5 py-3 text-xs font-large text-white">Pembayaran</div>
+            <div className="font-large px-5 py-3 text-xs text-white">Pembayaran</div>
 
             <NavLink url="#" active={url.startsWith('/admin/fees')} title="Uang Kuliah Tunggal" icon={IconMoneybag} />
             <NavLink url="#" active={url.startsWith('/admin/fee-groups')} title="Golongan UKT" icon={IconDroplets} />
 
-            <div className="px-5 py-3 text-xs font-large text-white">Lainnya</div>
+            <div className="font-large px-5 py-3 text-xs text-white">Lainnya</div>
 
-            <NavLink url={route('logout')} method='post' as='button' active={url.startsWith('/logout')} title="Logout" icon={IconLogout2} />
+            <NavLink
+                url={route('logout')}
+                method="post"
+                as="button"
+                active={url.startsWith('/logout')}
+                title="Logout"
+                icon={IconLogout2}
+            />
         </nav>
     );
 }

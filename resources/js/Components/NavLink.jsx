@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/react';
 
 export default function NavLink({ active = false, url = '#', title, icon: Icon, ...props }) {
     return (
-        <li className='list-none'>
+        <li className="list-none">
             <Link
                 {...props}
                 href={url}

@@ -12,25 +12,30 @@ import SidebarResponsive from './Partials/SidebarResponsive';
 export default function AppLayout({ title, children }) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const { url } = usePage();
+    const auth = usePage().props.auth.user;
     const flash = flashMessage(usePage());
 
     useEffect(() => {
-        if (flash && flash.Message && flash.type === 'warning') toast[flash.type](flash.message);
+        if (flash && flash.message && flash.type === 'warning') {
+            toast[flash.type](flash.message);
+        }
     }, [flash]);
 
     return (
         <>
             <Head title={title} />
-            <Toaster position="top-center richColors" />
+            <Toaster position="top-center" richColors />
+
             <div>
+                {/* Sidebar responsive (mobile) */}
                 <Transition.Root show={sidebarOpen} as={Fragment}>
                     <Dialog as="div" className="relative z-50 lg:hidden" onClose={setSidebarOpen}>
                         <Transition.Child
                             as={Fragment}
-                            enter="transition-opacity easy-linear duration-300"
+                            enter="transition-opacity ease-linear duration-300"
                             enterFrom="opacity-0"
                             enterTo="opacity-100"
-                            leave="transition-opacity easy-linear duration-300"
+                            leave="transition-opacity ease-linear duration-300"
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                         >
@@ -69,8 +74,7 @@ export default function AppLayout({ title, children }) {
                                     </Transition.Child>
 
                                     <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gradient-to-b from-blue-400 via-blue-600 to-blue-800 px-6 pb-2">
-                                        {/* sidebar responsive */}
-                                        <SidebarResponsive url={url}/>
+                                        <SidebarResponsive auth={auth} url={url} />
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>
@@ -78,13 +82,14 @@ export default function AppLayout({ title, children }) {
                     </Dialog>
                 </Transition.Root>
 
+                {/* Sidebar desktop */}
                 <div className="hidden p-2.5 lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
                     <div className="flex grow flex-col gap-y-5 overflow-y-auto rounded-xl border bg-gradient-to-b from-blue-400 via-blue-600 to-blue-800">
-                        {/* sidebar */}
-                        <Sidebar url={url} />
+                        <Sidebar auth={auth} url={url} />
                     </div>
                 </div>
 
+                {/* Top bar (mobile) */}
                 <div className="sticky top-0 z-40 flex items-center gap-x-6 bg-white p-4 shadow-sm sm:px-6 lg:hidden">
                     <button
                         type="button"
@@ -100,11 +105,12 @@ export default function AppLayout({ title, children }) {
 
                     <Link href="#">
                         <Avatar>
-                            <AvatarFallback>x</AvatarFallback>
+                            <AvatarFallback>{auth?.name?.charAt(0) || 'U'}</AvatarFallback>
                         </Avatar>
                     </Link>
                 </div>
 
+                {/* Main content */}
                 <main className="py-4 lg:pl-72">
                     <div className="px-4">{children}</div>
                 </main>

@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Permission\Traits\HasRoles;
 
 class UserSingleResource extends JsonResource
 {
@@ -20,7 +21,7 @@ class UserSingleResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'avatar' => $this->avatar ? Storage::url($this->avatar) : null,
-            'roles' => $this->getRoleNames(),
+            'roles' => $this->resource->getRoleNames(), // ✅ Benar! Mengakses method dari model User
             'role_name' => $this->getRoleNames()->first(),
             'student' => $this->when($this->hasRole('student'), [
                 'id' => $this->student?->id,

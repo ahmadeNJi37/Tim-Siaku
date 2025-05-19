@@ -13,7 +13,7 @@ export default function NavLink({ active = false, url = '#', title, icon: Icon, 
                     props.className,
                 )}
             >
-                <Icon className="size-6" />
+                {Icon && <Icon className="size-6" />}
                 {title}
             </Link>
         </li>

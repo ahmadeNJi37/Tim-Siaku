@@ -75,7 +75,7 @@ export default function AppLayout({ title, children }) {
 
                                     <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gradient-to-b from-blue-400 via-blue-600 to-blue-800 px-6 pb-2">
 
-                                        <SidebarResponsive auth={auth} url={url} />
+                                        <SidebarResponsive auth={usePage().props.auth} url={url} />
 
                                     </div>
                                 </Dialog.Panel>
@@ -87,7 +87,7 @@ export default function AppLayout({ title, children }) {
                 {/* Sidebar desktop */}
                 <div className="hidden p-2.5 lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
                     <div className="flex grow flex-col gap-y-5 overflow-y-auto rounded-xl border bg-gradient-to-b from-blue-400 via-blue-600 to-blue-800">
-                        <Sidebar auth={auth} url={url} />
+                        <Sidebar auth={usePage().props.auth} url={url} />
                     </div>
                 </div>
 

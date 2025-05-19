@@ -14,7 +14,6 @@ import {
     IconMoneybag,
     IconSchool,
     IconUserCog,
-    IconUserGroup,
     IconUserPentagon,
     IconUsersGroup,
 } from '@tabler/icons-react';
@@ -116,19 +115,33 @@ export default function Sidebar({ auth, url }) {
                             title="Golongan UKT"
                             icon={IconDroplets}
                         />
-                        <NavLink
-                            url={route('logout')}
-                            method="post"
-                            as="button"
-                            active={url.startsWith('/logout')}
-                            title="Logout"
-                            icon={IconLogout2}
-                        />
                     </>
                 )}
 
                 {auth.roles.some((role) => ['Teacher'].includes(role)) && (
-                    <></> // Tambahkan konten sesuai kebutuhan role Teacher
+                    <>
+                    <NavLink
+                            url="#"
+                            active={url.startsWith('/teachers/dashboard')}
+                            title="Dashboard"
+                            icon={IconLayout2}
+                        />
+
+                    <div className="px-5 py-3 text-xs font-medium text-white">Akademik</div>
+                    <NavLink
+                            url="#"
+                            active={url.startsWith('/teachers/courses')}
+                            title="Mata Kuliah"
+                            icon={IconBooks}
+                    />
+                    <NavLink
+                            url="#"
+                            active={url.startsWith('/teachers/schedules')}
+                            title="Jadwal"
+                            icon={IconCalendar}
+                    />
+
+                    </>
                 )}
 
                 {auth.roles.some((role) => ['Operator'].includes(role)) && (
@@ -145,13 +158,13 @@ export default function Sidebar({ auth, url }) {
                             url="#"
                             active={url.startsWith('/operators/students')}
                             title="Mahasiswa"
-                            icon={IconUser}
+                            icon={IconUserPentagon}
                         />
                         <NavLink
                             url="#"
                             active={url.startsWith('/operators/teachers')}
                             title="Dosen"
-                            icon={IconUserGroup}
+                            icon={IconUsersGroup}
                         />
 
                         <div className="px-5 py-3 text-xs font-medium text-white">Akademik</div>

@@ -62,8 +62,9 @@ export default function Login({ status, canResetPassword }) {
                                 />
                                 {errors.email && <InputError message={errors.email} />}
                                 <div className="grid gap-2">
+                                    <Label htmlFor="password">password</Label>
                                     <div className="flex items-center">
-                                        <Label htmlFor="password">password</Label>
+                                        
                                         <Input
                                             type="password"
                                             id="password"
@@ -95,7 +96,7 @@ export default function Login({ status, canResetPassword }) {
                                         size="xl"
                                         className="w-full"
 
-                                        disabled={procesing}
+                                        disabled={processing}
 
                                     >
                                         Masuk
@@ -107,8 +108,8 @@ export default function Login({ status, canResetPassword }) {
                 </div>
             </div>
 
-            <div className="lg:black hidden bg-muted">
-                <img src="/images/bg-login.webp" alt="login" classNmae="h-full max-h-screen w-full object-cover" />
+            <div className="lg:block hidden bg-muted">
+                <img src="/images/bg-login.webp" alt="login" className="h-full max-h-screen w-full object-cover" />
 
             </div>
         </div>

@@ -34,15 +34,20 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-       if((auth()->user()->hasRole('Admin'))) {
-         return redirect()->intended(route('admin.dashboard', false));
-       } elseif((auth()->user()->hasRole('Student'))) {
-         return redirect()->intended(route('students.dashboard', false));
-       } elseif((auth()->user()->hasRole('Teacher'))) {
-         return redirect()->intended(route('teachers.dashboard', false));
-       } elseif((auth()->user()->hasRole('Operator'))) {
-         return redirect()->intended(route('operators.dashboard', false));
-       }
+
+        if (auth()->user()->hasRole('Admin')) {
+            return redirect()->intended(route('admin.dashboard', absolute: false));
+        } else if (auth()->user()->hasRole('student')) {
+            return redirect()->intended(route('students.dashboard', absolute: false));
+        } else if (auth()->user()->hasRole('Teacher')) {
+            return redirect()->intended(route('Teachers.dashboard', absolute: false));
+        } else if (auth()->user()->hasRole('Operator')) {
+            return redirect()->intended(route('Operators.dashboard', absolute: false));
+        }
+
+        // Tambahkan fallback jika tidak ada role cocok
+        return redirect()->route('home'); // Atau sesuai kebutuhanmu
+
     }
 
     /**

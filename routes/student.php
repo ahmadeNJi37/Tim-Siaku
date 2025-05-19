@@ -1,12 +1,8 @@
 <?php
 
-
 use App\Http\Controllers\Student\DashboardStudentController;
 use Illuminate\Support\Facades\Route;
 
-
-
-Route::prefix('students')->group(function (){
-
-    Route::get('dashboard', DashboardStudentController::class)->name('admin.dashboard');
+Route::prefix('students')->middleware(['auth', 'role:Student'])->group(function () {
+    Route::get('dashboard', [DashboardStudentController::class, 'index'])->name('student.dashboard');
 });

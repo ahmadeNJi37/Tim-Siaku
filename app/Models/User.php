@@ -13,7 +13,11 @@ use App\Models\Operator;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles; 
+
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable, HasRoles;
+    use HasRoles;
+
 
     protected $fillable = [
         'name',

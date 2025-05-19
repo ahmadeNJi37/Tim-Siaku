@@ -74,7 +74,9 @@ export default function AppLayout({ title, children }) {
                                     </Transition.Child>
 
                                     <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gradient-to-b from-blue-400 via-blue-600 to-blue-800 px-6 pb-2">
+
                                         <SidebarResponsive auth={auth} url={url} />
+
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>

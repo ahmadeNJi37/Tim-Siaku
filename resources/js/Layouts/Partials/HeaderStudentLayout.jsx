@@ -136,9 +136,11 @@ export default function HeaderStudentLayout({ url }) {
                         <Disclosure.Panel className="lg:hidden">
                             <div className="space-y-1 px-2 pb-3 pt-2">
                                 <Disclosure.Button
+
                                     as="button"
                                     href={route('logout')}
                                     method="post"
+
                                     className={cn(
                                         url.startsWith('/student/dashboard')
                                             ? 'bg-blue-500 text-white'
@@ -211,8 +213,10 @@ export default function HeaderStudentLayout({ url }) {
                                 </div>
                                 <div className="mt-3 space-y-1 px-2">
                                     <Disclosure.Button
+
                                         as="a"
                                         href="#"
+
                                         className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-blue-500"
                                     >
                                         Logout

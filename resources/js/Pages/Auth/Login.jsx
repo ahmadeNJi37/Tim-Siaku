@@ -27,7 +27,9 @@ export default function Login({ status, canResetPassword }) {
         <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2">
             <div className="flex flex-col px-6 py-4">
                 <ApplicationLogo
-                    bgLogo="from-blue-500 via-blue-600 to-blue-600"
+
+                    bgLogo="from-blue-400 via-blue-600 to-blue-800"
+
                     colorLogo="text-white"
                     colorText="text-white"
                 />
@@ -41,6 +43,7 @@ export default function Login({ status, canResetPassword }) {
                             )}
                             <h1 className="text-3xl font-bold text-foreground">Masuk</h1>
                             <p className="text-balance text-muted-foreground">
+
                                 Masukan email anda dibawah ini untuk masuk ke akun anda
                             </p>
                         </div>
@@ -85,12 +88,15 @@ export default function Login({ status, canResetPassword }) {
                                         </div>
                                         {errors.remember && <InputError message={errors.remember} />}
                                     </div>
+
                                     <Button
                                         type="submit"
                                         variant="blue"
                                         size="xl"
                                         className="w-full"
+
                                         disabled={procesing}
+
                                     >
                                         Masuk
                                     </Button>
@@ -100,11 +106,15 @@ export default function Login({ status, canResetPassword }) {
                     </div>
                 </div>
             </div>
+
             <div className="lg:black hidden bg-muted">
                 <img src="/images/bg-login.webp" alt="login" classNmae="h-full max-h-screen w-full object-cover" />
+
             </div>
         </div>
     );
 }
 
+
 Login.Layout = (page) => <GuestLayout children={page} title="Login" />;
+

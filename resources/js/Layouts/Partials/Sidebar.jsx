@@ -13,7 +13,6 @@ import {
     IconLogout2,
     IconMoneybag,
     IconSchool,
-    IconUser,
     IconUserCog,
     IconUserGroup,
     IconUserPentagon,
@@ -178,6 +177,7 @@ export default function Sidebar({ auth, url }) {
                 )}
 
                 <div className="px-5 py-3 text-xs font-medium text-white">Lainnya</div>
+
                 <li>
                     <Link
                         href={route('logout')}
@@ -189,6 +189,7 @@ export default function Sidebar({ auth, url }) {
                         Logout
                     </Link>
                 </li>
+
             </ul>
         </nav>
     );

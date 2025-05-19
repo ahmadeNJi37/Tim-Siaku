@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
+use Spatie\Permission\Traits\HasRoles;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -33,6 +34,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+
         if (auth()->user()->hasRole('Admin')) {
             return redirect()->intended(route('admin.dashboard', absolute: false));
         } else if (auth()->user()->hasRole('student')) {
@@ -45,6 +47,7 @@ class AuthenticatedSessionController extends Controller
 
         // Tambahkan fallback jika tidak ada role cocok
         return redirect()->route('home'); // Atau sesuai kebutuhanmu
+
     }
 
     /**

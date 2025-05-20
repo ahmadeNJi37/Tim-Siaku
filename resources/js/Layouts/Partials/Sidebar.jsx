@@ -1,5 +1,5 @@
 import NavLink from '@/Components/NavLink';
-import { Avatar, AvatarFallback } from '@/Components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/Components/ui/avatar';
 import { Link } from '@inertiajs/react';
 import {
     IconBooks,
@@ -28,11 +28,12 @@ export default function Sidebar({ auth, url }) {
                         className="mb-2 flex items-center gap-x-4 p-3 text-sm font-semibold leading-6 text-white hover:bg-blue-800"
                     >
                         <Avatar>
-                            <AvatarFallback>{auth?.user?.name?.charAt(0) || 'U'}</AvatarFallback>
+                            <AvatarImage src={auth.avatar}/>
+                            <AvatarFallback>{auth.name.substring(0,1)}</AvatarFallback>
                         </Avatar>
                         <div className="flex flex-col text-left">
-                            <span className="truncate font-bold">Monkey D Luffy</span>
-                            <span className="truncate">Admin</span>
+                            <span className="truncate font-bold">{auth.name}</span>
+                            <span className="truncate">{auth.role_name}</span>
                         </div>
                     </Link>
                 </li>

@@ -179,6 +179,7 @@ export default function SidebarResponsive({ auth, url }) {
                 url={route('logout')}
                 method="post"
                 as="button"
+                className='w-full'
                 active={url.startsWith('/logout')}
                 title="Logout"
                 icon={IconLogout2}

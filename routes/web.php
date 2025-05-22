@@ -23,7 +23,7 @@ Route::get('/dashboard', function () {
         } else if (auth()->user()->hasRole('Operator')) {
             return redirect()->intended(route('operators.dashboard', absolute: false));
         } else {
-            abort(404);
+            return redirect()->intended(route('students.dashboard', absolute: false));
         }
 })->middleware(['auth', 'verified'])->name('dashboard');
 

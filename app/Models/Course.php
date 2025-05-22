@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Faculty;
+use App\Models\Teacher;
+use App\Models\Department;
+use App\Models\AcademicYear;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Course extends Model
 {

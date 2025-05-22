@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Student;
+use App\Models\AcademicYear;
 use App\Enums\StudyPlanStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

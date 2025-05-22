@@ -192,17 +192,17 @@ export default function Sidebar({ auth, url }) {
 
                 <div className="px-5 py-3 text-xs font-medium text-white">Lainnya</div>
 
-                <li>
-                    <Link
-                        href={route('logout')}
+                    <NavLink
+                        url={route('logout')}
                         method="post"
-                        as="button"
-                        className="flex w-full items-center gap-x-3 px-3 py-2 text-left text-sm font-semibold leading-6 text-white hover:bg-blue-800"
-                    >
-                        <IconLogout2 className="h-5 w-5" />
-                        Logout
-                    </Link>
-                </li>
+                        as="Button"
+                        className="w-60 mx-3"
+                        active={url.startsWith('logout')}
+                        title="Logout"
+                        icon={IconLogout2}
+                    />
+
+
 
             </ul>
         </nav>

@@ -10,7 +10,12 @@ import HeaderStudentLayout from './Partials/HeaderStudentLayout';
 export default function StudentLayout({ children, title }) {
     const checkFee = usePage().props.checkFee;
     const { url } = usePage();
+    const auth = usePage().props.auth || {}; 
     const flash = flashMessage(usePage());
+    const studentNumber = usePage().props.auth?.student_number || "Nomor tidak tersedia";
+    console.log("Auth:", usePage().props.auth);
+    console.log("Student:", usePage().props.auth.student);
+    console.log("Classroom:", usePage().props.auth.classroom);
 
     useEffect(() => {
         if (flash && flash.Message && flash.type === 'warning') toast[flash.type](flash.message);
@@ -23,7 +28,7 @@ export default function StudentLayout({ children, title }) {
             <div className="min-h-full">
                 <div className="bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 pb-32">
                     {/* {Header Layout} */}
-                    <HeaderStudentLayout url={url} />
+                    <HeaderStudentLayout auth={auth} url={url} />
                 </div>
 
                 <main className="-mt-32 px-6 pb-12 lg:px-28">

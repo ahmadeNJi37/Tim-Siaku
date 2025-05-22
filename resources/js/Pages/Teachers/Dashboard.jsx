@@ -5,7 +5,7 @@ import { usePage } from '@inertiajs/react';
 import { IconBooks, IconCalendar, IconDoor, IconLayout2 } from '@tabler/icons-react';
 
 export default function Dashboard(props) {
-     const auth = usePage().props?.auth?.user;
+     const auth = usePage().props.auth;
     return (
         <div className="flex w-full flex-col pb-32">
             <div className="flex flex-col items-start justify-between gap-y-4 lg:flex-row lg:items-center">
@@ -17,13 +17,13 @@ export default function Dashboard(props) {
             </div>
             <div className='flex flex-col mb-8'>
                             <h2 className='text-xl font-medium leading-relaxed text-foreground'>
-                                Hi, {auth?.name ?? 'Guest'}
+                                Hi, {auth.name}
                             </h2>
                             <p className='text-muted-foreground text-sm'>
                                 Selamat datang di sistem Informasi Akademik Universitas
                             </p>
                         </div>
-                        <div className='grid gap-4 mb-8 lg:grid-cols-4'>
+                        <div className='grid gap-4 mb-8 lg:grid-cols-3'>
                             <CardStat
                                 data={{ 
                                     title: 'Total Mata Kuliah',

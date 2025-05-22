@@ -20,24 +20,20 @@ class DashboardTeacherController extends Controller
             ],
             'count' => [
                 // Hitung jumlah matakuliah milik guru ini
-                'courses' => Course::where('teacher_id', auth()->user()->teacher->id)->count(),
+                'courses' => Course::query()
+                ->where('teacher_id', auth()->user()->teacher->id)
+                ->count(),
 
                 // Hitung jumlah jadwal milik guru ini lalu ambil distinct classroom_id-nya
-                'classrooms' => Classroom::whereIn('id', function ($query) {
-                    $query->select('classroom_id')
-                        ->from('schedules')
-                        ->whereIn('course_id', function ($q) {
-                            $q->select('id')
-                                ->from('courses')
-                                ->where('teacher_id', auth()->user()->teacher->id);
-                        });
-                })->count(),
+                'classrooms' => Classroom::query()
+                ->whereHas('schedules.course', fn ($query) => $query->where('teacher_id', auth()->user()->teacher->id))
+                ->count(),
 
                 // Hitung jumlah jadwal mengajar guru ini
-                'schedules' => Schedule::whereHas('course', function ($query) {
-                    $query->where('teacher_id', auth()->user()->teacher->id);
-                })->count(),
-            ]
+                'schedules' => Schedule::query()
+                ->whereHas('course', fn ($query) => $query->where('teacher_id', auth()->user()->teacher->id))
+                ->count(),
+            ],
         ]);
     }
 }

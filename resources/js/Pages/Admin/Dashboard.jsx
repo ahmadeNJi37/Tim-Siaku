@@ -5,8 +5,9 @@ import { usePage } from '@inertiajs/react';
 import { IconLayout2, IconBuildingSkyscraper, IconSchool, IconDoor, IconBooks } from '@tabler/icons-react';
 
 export default function Dashboard(props) {
-    const { auth } = usePage().props;
-    const user = auth?.user;
+    const auth = usePage().props.auth;
+    
+
 
     return (
         <div className="flex w-full flex-col pb-32">
@@ -19,7 +20,7 @@ export default function Dashboard(props) {
             </div>
             <div className='flex flex-col mb-8'>
                 <h2 className='text-xl font-medium leading-relaxed text-foreground'>
-                    Hi, {user?.name ?? 'Guest'}
+                    Hi, {auth.name}
                 </h2>
                 <p className='text-muted-foreground text-sm'>
                     Selamat datang di sistem Informasi Akademik Universitas

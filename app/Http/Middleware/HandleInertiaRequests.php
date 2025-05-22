@@ -36,6 +36,7 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return [
+
             ...parent::share($request),
             'auth' => fn () => $request->user() ? new UserSingleResource($request->user()) : null,
 
@@ -51,7 +52,7 @@ class HandleInertiaRequests extends Middleware
 
             'academic_year' => fn () => AcademicYear::query()->where('is_active', true)->first(),
 
-            'checkfee' => fn () => $request->user() && optional($request->user()->student)->id
+            'checkfee' => fn () => $request->user() && $request->user()->student && activeAcademicYear()
                 ? Fee::query()
                     ->where('student_id', auth()->user()->student->id)
                     ->where('academic_year_id', activeAcademicYear()->id)

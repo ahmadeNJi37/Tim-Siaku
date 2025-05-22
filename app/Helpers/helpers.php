@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Helpers;
 use App\Models\AcademicYear;
 
 if (!function_exists('flashMessage')) {
@@ -24,7 +24,7 @@ if (!function_exists('activeAcademicYear')) {
     }
 }
 
-if(!function_exists( function: 'getLetterGrade')) {
+if(!function_exists('getLetterGrade')) {
     function getLetterGrade($grade): string
     {
         return match (true) {
@@ -37,7 +37,7 @@ if(!function_exists( function: 'getLetterGrade')) {
             $grade >= 60 => 'C',
             $grade >= 55 => 'C-',
             $grade >= 50 => 'D',
-            default => 'E',
+            default => 'E'
             
 
         };

@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Student;
 use App\Enums\FeeStatus;
+use App\Models\FeeGroup;
+use App\Models\AcademicYear;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

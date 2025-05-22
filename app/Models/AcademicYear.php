@@ -19,7 +19,7 @@ class AcademicYear extends Model
     protected function casts(): array
     {
         return [
-            'semester' => AcademicYearSemester::class,
+            'semester' => AcademicYearSemester::class
         ];
     }
 }

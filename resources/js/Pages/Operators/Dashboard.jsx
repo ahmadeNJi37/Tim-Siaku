@@ -2,10 +2,10 @@ import CardStat from '@/Components/CardStat';
 import HeaderTitle from '@/Components/HeaderTitle';
 import AppLayout from '@/Layouts/AppLayout';
 import { usePage } from '@inertiajs/react';
-import { IconBooks, IconDoor, IconLayout2, IconUsers, IconUsersGroup } from '@tabler/icons-react';
+import { IconBooks, IconDoor, IconLayout2, IconUserPentagon, IconUsers, IconUsersGroup } from '@tabler/icons-react';
 
 export default function Dashboard(props) {
-    const auth = usePage().props?.auth?.user;
+    const auth = usePage().props.auth;
 
 
     return (
@@ -19,7 +19,7 @@ export default function Dashboard(props) {
             </div>
             <div className='flex flex-col mb-8'>
                 <h2 className='text-xl font-medium leading-relaxed text-foreground'>
-                    Hi, {auth?.name ?? 'Guest'}
+                    Hi, {auth.name}
                 </h2>
                 <p className='text-muted-foreground text-sm'>
                     Selamat datang di sistem Informasi Akademik Universitas
@@ -29,7 +29,7 @@ export default function Dashboard(props) {
                 <CardStat
                     data={{ 
                         title: 'Total Mahasiswa',
-                        icon: IconUsers,
+                        icon: IconUserPentagon,
                         background: 'text-white bg-gradient-to-r from-red-400 via-red-500 to-red-500',
                         iconClassName: 'text-white'
                     }}

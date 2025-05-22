@@ -56,8 +56,8 @@ class DatabaseSeeder extends Seeder
          ]);
 
            $student = User::factory()->create( attributes: [
-            'name' => 'Usup',
-            'email' => 'usup@siakubwa.test',
+            'name' => 'Usop',
+            'email' => 'usop@siakubwa.test',
          ])->assignRole(Role::create( attributes: [
             'name' => 'Student',
          ]));

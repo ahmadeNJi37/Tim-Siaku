@@ -32,7 +32,7 @@ export default function SidebarResponsive({ auth, url }) {
 
                         <div className="px-5 py-3 text-xs font-medium text-white">Master</div>
                         <NavLink
-                            url="#"
+                            url={route('admin.faculties.index')}
                             active={url.startsWith('/admin/faculties')}
                             title="Fakultas"
                             icon={IconBuildingSkyscraper}

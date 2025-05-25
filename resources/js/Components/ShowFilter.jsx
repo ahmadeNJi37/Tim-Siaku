@@ -16,7 +16,7 @@ export default function ShowFilter({ params, className = '' }) {
                     {Object.entries(params).map(
                         ([key, value]) =>
                             value && (
-                                <Badge key={index} variant="white" className="mr-2">
+                                <Badge key={key} variant="white" className="mr-2">
                                     {key.charAt(0).toUpperCase() + key.slice(1)} : {value}
                                 </Badge>
                             ),

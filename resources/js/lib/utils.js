@@ -18,7 +18,7 @@ export const deleteAction = (url, { closeModal, ...options } = {}) => {
         preserveScroll: true,
         preserveState: true,
         onSuccess: (success) => {
-            const Flash = flashMessage(success);
+            const flash = flashMessage(success);
             if (flash) {
                 toast[flash.type](flash.message);
             }
@@ -28,7 +28,7 @@ export const deleteAction = (url, { closeModal, ...options } = {}) => {
             }
         },
 
-        ...option,
+        ...options,
     };
 
     router.delete(url, defaultOptions);
@@ -43,7 +43,7 @@ export const formatToRupiah = (amount) => {
         style: 'currency',
         currency: 'IDR',
         minimumFractionDigits: 0,
-        maximumFractiontDigits: 0,
+        maximumFractionDigits: 0,  // perbaikan typo 'maximumFractiontDigits'
     });
 
     return formatter.format(amount);

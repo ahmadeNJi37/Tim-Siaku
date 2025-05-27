@@ -38,7 +38,7 @@ export default function SidebarResponsive({ auth, url }) {
                             icon={IconBuildingSkyscraper}
                         />
                         <NavLink
-                            url="#"
+                            url={route('admin.departments.imdex')}
                             active={url.startsWith('/admin/departments')}
                             title="Program Studi"
                             icon={IconSchool}

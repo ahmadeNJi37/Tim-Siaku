@@ -1,4 +1,5 @@
 import { Avatar, AvatarFallback } from '@/Components/ui/avatar';
+import { Toaster } from '@/Components/ui/sonner';
 import { flashMessage } from '@/lib/utils';
 import { Dialog, Transition } from '@headlessui/react';
 import { Head, Link, usePage } from '@inertiajs/react';
@@ -7,7 +8,6 @@ import { Fragment, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import Sidebar from './Partials/Sidebar';
 import SidebarResponsive from './Partials/SidebarResponsive';
-import { Toaster } from '@/Components/ui/sonner';
 
 export default function AppLayout({ title, children }) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -74,9 +74,7 @@ export default function AppLayout({ title, children }) {
                                     </Transition.Child>
 
                                     <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gradient-to-b from-blue-400 via-blue-600 to-blue-800 px-6 pb-2">
-
                                         <SidebarResponsive auth={usePage().props.auth} url={url} />
-
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>

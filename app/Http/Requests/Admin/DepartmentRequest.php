@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class DepartmentRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Tentukan apakah user berhak mengakses request ini.
      */
     public function authorize(): bool
     {
@@ -15,31 +15,41 @@ class DepartmentRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * Aturan validasi untuk request ini.
      */
     public function rules(): array
     {
         return [
-            'faculty_id' => [
-                'required',
-                'exists:faculties,id',
-            ],
-            'name' => [
-                'required',
-                'string',
-                'min:3',
-                'max:255',
-            ],
+            'faculty_id' => ['required', 'exists:faculties,id'],
+            'name'       => ['required', 'string', 'min:3', 'max:255'],
+            'code'       => ['nullable', 'string', 'max:20'],
         ];
     }
 
+    /**
+     * Label atribut untuk pesan validasi.
+     */
     public function attributes(): array
     {
         return [
             'faculty_id' => 'Fakultas',
-            'name' => 'Nama',
+            'name'       => 'Nama Program Studi',
+            'code'       => 'Kode Program Studi',
+        ];
+    }
+
+    /**
+     * (Opsional) Pesan error custom.
+     */
+    public function messages(): array
+    {
+        return [
+            'faculty_id.required' => 'Fakultas wajib dipilih.',
+            'faculty_id.exists'   => 'Fakultas yang dipilih tidak valid.',
+            'name.required'       => 'Nama program studi wajib diisi.',
+            'name.min'            => 'Nama program studi minimal :min karakter.',
+            'name.max'            => 'Nama program studi maksimal :max karakter.',
+            'code.max'            => 'Kode program studi maksimal :max karakter.',
         ];
     }
 }

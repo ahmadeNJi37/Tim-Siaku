@@ -18,9 +18,8 @@ import {
 
 export default function SidebarResponsive({ auth, url }) {
     return (
-        <nav className="mt-4 flex flex-1 flex-col items-top">
+        <nav className="items-top mt-4 flex flex-1 flex-col">
             <ul role="list" className="flex flex-1 flex-col">
-
                 {auth.roles.some((role) => ['Admin'].includes(role)) && (
                     <>
                         <NavLink
@@ -44,17 +43,27 @@ export default function SidebarResponsive({ auth, url }) {
                             icon={IconSchool}
                         />
                         <NavLink
-                            url="#"
+                            url={route('admin.academic-years.index')}
                             active={url.startsWith('/admin/academic-years')}
                             title="Tahun Ajaran"
                             icon={IconCalendarTime}
                         />
-                        <NavLink url="#" active={url.startsWith('/admin/classrooms')} title="Kelas" icon={IconDoor} />
-                        <NavLink url="#" active={url.startsWith('/admin/roles')} title="Peran" icon={IconCircleKey} />
+                        <NavLink
+                            url={route('admin.classrooms.index')}
+                            active={url.startsWith('/admin/classrooms')}
+                            title="Kelas"
+                            icon={IconDoor}
+                        />
+                        <NavLink
+                            url={route('admin.roles.index')}
+                            active={url.startsWith('/admin/roles')}
+                            title="Peran"
+                            icon={IconCircleKey}
+                        />
 
                         <div className="px-5 py-3 text-xs font-medium text-white">Pengguna</div>
                         <NavLink
-                            url="#"
+                            url={route('admin.students.index')}
                             active={url.startsWith('/admin/students')}
                             title="Mahasiswa"
                             icon={IconUserPentagon}
@@ -94,7 +103,7 @@ export default function SidebarResponsive({ auth, url }) {
                             icon={IconMoneybag}
                         />
                         <NavLink
-                            url="#"
+                            url={route('admin.fee_groups.index')}
                             active={url.startsWith('/admin/fee-groups')}
                             title="Golongan UKT"
                             icon={IconDroplets}
@@ -104,27 +113,26 @@ export default function SidebarResponsive({ auth, url }) {
 
                 {auth.roles.some((role) => ['Teacher'].includes(role)) && (
                     <>
-                    <NavLink
+                        <NavLink
                             url="#"
                             active={url.startsWith('/teachers/dashboard')}
                             title="Dashboard"
                             icon={IconLayout2}
                         />
 
-                    <div className="px-5 py-3 text-xs font-medium text-white">Akademik</div>
-                    <NavLink
+                        <div className="px-5 py-3 text-xs font-medium text-white">Akademik</div>
+                        <NavLink
                             url="#"
                             active={url.startsWith('/teachers/courses')}
                             title="Mata Kuliah"
                             icon={IconBooks}
-                    />
-                    <NavLink
+                        />
+                        <NavLink
                             url="#"
                             active={url.startsWith('/teachers/schedules')}
                             title="Jadwal"
                             icon={IconCalendar}
-                    />
-
+                        />
                     </>
                 )}
 
@@ -173,17 +181,17 @@ export default function SidebarResponsive({ auth, url }) {
                     </>
                 )}
 
-            <div className="font-large px-5 py-3 text-xs text-white">Lainnya</div>
+                <div className="font-large px-5 py-3 text-xs text-white">Lainnya</div>
 
-            <NavLink
-                url={route('logout')}
-                method="post"
-                as="button"
-                className='w-full'
-                active={url.startsWith('/logout')}
-                title="Logout"
-                icon={IconLogout2}
-            />
+                <NavLink
+                    url={route('logout')}
+                    method="post"
+                    as="button"
+                    className="w-full"
+                    active={url.startsWith('/logout')}
+                    title="Logout"
+                    icon={IconLogout2}
+                />
             </ul>
         </nav>
     );

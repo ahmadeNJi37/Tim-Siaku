@@ -110,17 +110,18 @@ class FacultyController extends Controller
         }
     }
 
-    public function destroy(Faculty $faculty): RedirectResponse
-    {
-        try {
-            $this->delete_file($faculty, 'logo');
-            $faculty->delete();
+   public function destroy(Faculty $faculty): RedirectResponse
+{
+    try {
+        $this->delete_file($faculty, 'logo');
+        $faculty->delete();
 
-            flashMessage(MessageType::DELETED->message('fakultas'));
-            return to_route('admin.faculties.index');
-        } catch (Throwable $e) {
-            flashMessage(MessageType::ERROR->message($e->getMessage()), 'error');
-            return to_route('admin.faculties.index');
-        }
+        flashMessage(MessageType::DELETED->message('fakultas'));
+        return to_route('admin.faculties.index');
+    } catch (Throwable $e) {
+        flashMessage(MessageType::ERROR->message($e->getMessage()), 'error');
+        return to_route('admin.faculties.index');
     }
+}
+
 }

@@ -1,14 +1,14 @@
-import HeaderTitle from "@/Components/HeaderTitle"; 
-import InputError from "@/Components/InputError";
-import { Button } from "@/Components/ui/button";
-import { Card, CardContent } from "@/Components/ui/card";
-import { Input } from "@/Components/ui/input";
-import { Label } from "@/Components/ui/label";
-import { Toast } from "@/Components/ui/toast";
-import AppLayout from "@/Layouts/AppLayout";
-import { Link, useForm } from "@inertiajs/react";
-import { IconArrowLeft, IconBuildingSkyscraper } from "@tabler/icons-react";
-import { useRef } from "react";
+import HeaderTitle from '@/Components/HeaderTitle';
+import InputError from '@/Components/InputError';
+import { Button } from '@/Components/ui/button';
+import { Card, CardContent } from '@/Components/ui/card';
+import { Input } from '@/Components/ui/input';
+import { Label } from '@/Components/ui/label';
+import { Toast } from '@/Components/ui/toast';
+import AppLayout from '@/Layouts/AppLayout';
+import { Link, useForm } from '@inertiajs/react';
+import { IconArrowLeft, IconBuildingSkyscraper } from '@tabler/icons-react';
+import { useRef } from 'react';
 
 export default function Edit(props) {
     const fileInputLogo = useRef(null);
@@ -41,20 +41,15 @@ export default function Edit(props) {
     };
 
     return (
-        <div className="flex flex-col w-full pb-32">
-            <div className="flex flex-col items-start justify-between mb-8 gap-y-4 lg:flex-row lg:items-center">
+        <div className="flex w-full flex-col pb-32">
+            <div className="mb-8 flex flex-col items-start justify-between gap-y-4 lg:flex-row lg:items-center">
                 <HeaderTitle
                     title={props.page_setting?.title ?? 'Judul Default'}
                     subtitle={props.page_setting?.subtitle ?? ''}
                     icon={IconBuildingSkyscraper}
                 />
 
-                <Button
-                    variant="orange"
-                    size="xl"
-                    className="w-full lg:w-auto"
-                    asChild
-                >
+                <Button variant="orange" size="xl" className="w-full lg:w-auto" asChild>
                     <Link href={route('admin.faculties.index')}>
                         <IconArrowLeft className="size-4" />
                         Kembali
@@ -92,7 +87,7 @@ export default function Edit(props) {
                             </div>
                         </div>
 
-                        <div className="flex flex-col gap-2 mt-8 lg:flex-row lg:justify-end">
+                        <div className="mt-8 flex flex-col gap-2 lg:flex-row lg:justify-end">
                             <Button type="submit" variant="blue" size="xl" disabled={processing}>
                                 Simpan
                             </Button>

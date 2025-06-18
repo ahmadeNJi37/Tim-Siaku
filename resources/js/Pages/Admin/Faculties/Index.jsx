@@ -13,7 +13,14 @@ import UseFilter from '@/hooks/UseFilter';
 import AppLayout from '@/layouts/AppLayout';
 import { deleteAction, formatDateIndo } from '@/lib/utils';
 import { Link } from '@inertiajs/react';
-import { IconArrowsDownUp, IconBuildingSkyscraper, IconPencil, IconPlus, IconRefresh, IconTrash } from '@tabler/icons-react';
+import {
+    IconArrowsDownUp,
+    IconBuildingSkyscraper,
+    IconPencil,
+    IconPlus,
+    IconRefresh,
+    IconTrash,
+} from '@tabler/icons-react';
 import { useState } from 'react';
 
 export default function Index(props) {
@@ -35,12 +42,24 @@ export default function Index(props) {
     });
 
     return (
-        <div className="flex flex-col w-full pb-32">
-            {/* ... header ... */}
+        <div className="flex w-full flex-col pb-32">
+            <div className="mb-8 flex flex-col items-start justify-between gap-y-4 lg:flex-row lg:items-center">
+                <HeaderTitle
+                    title={props.page_setting.title}
+                    subtitle={props.page_setting.subtitle}
+                    icon={IconBuildingSkyscraper}
+                />
+                <Button variant="orange" size="xl" className="w-full lg:w-auto" asChild>
+                    <Link href={route('admin.faculties.create')}>
+                        <IconPlus className="size-4" />
+                        Tambah
+                    </Link>
+                </Button>
+            </div>
             <Card>
-                <CardHeader className="p-0 mb-4">
+                <CardHeader className="mb-4 p-0">
                     {/* filters */}
-                    <div className="flex flex-col w-full gap-4 px-6 py-4 lg:flex-row lg:items-center">
+                    <div className="flex w-full flex-col gap-4 px-6 py-4 lg:flex-row lg:items-center">
                         {/* komentar di luar atribut */}
                         {/* typo diperbaiki pada placeholder */}
                         <Input
@@ -69,7 +88,7 @@ export default function Index(props) {
                     {/* show filter */}
                     <ShowFilter params={params} />
                 </CardHeader>
-                <CardContent className="p-0 [&>table td]:whitespace-nowrap [&>table td]:px-6">
+                <CardContent className="[&>table td]:whitespace-nowrap [&>table td]:px-6 p-0">
                     {faculties.length === 0 ? (
                         <EmptyState
                             icon={IconBuildingSkyscraper}
@@ -80,8 +99,67 @@ export default function Index(props) {
                         <Table className="w-full">
                             <TableHeader>
                                 <TableRow>
-                                    {/* header table */}
-                                    {/* ... */}
+                                    <TableHead>
+                                        <Button
+                                            variant="ghost"
+                                            className="group inline-flex"
+                                            onClick={() => onSortable('name')}
+                                        >
+                                            #
+                                            <span className="ml-2 flex-none rounded text-muted-foreground">
+                                                <IconArrowsDownUp className="size-4" />
+                                            </span>
+                                        </Button>
+                                    </TableHead>
+                                    <TableHead>
+                                        <Button
+                                            variant="ghost"
+                                            className="group inline-flex"
+                                            onClick={() => onSortable('faculty_id')}
+                                        >
+                                            Fakultas
+                                            <span className="ml-2 flex-none rounded text-muted-foreground">
+                                                <IconArrowsDownUp className="size-4" />
+                                            </span>
+                                        </Button>
+                                    </TableHead>
+                                    <TableHead>
+                                        <Button
+                                            variant="ghost"
+                                            className="group inline-flex"
+                                            onClick={() => onSortable('name')}
+                                        >
+                                            Nama
+                                            <span className="ml-2 flex-none rounded text-muted-foreground">
+                                                <IconArrowsDownUp className="size-4" />
+                                            </span>
+                                        </Button>
+                                    </TableHead>
+                                    <TableHead>
+                                        <Button
+                                            variant="ghost"
+                                            className="group inline-flex"
+                                            onClick={() => onSortable('code')}
+                                        >
+                                            Kode
+                                            <span className="ml-2 flex-none rounded text-muted-foreground">
+                                                <IconArrowsDownUp className="size-4" />
+                                            </span>
+                                        </Button>
+                                    </TableHead>
+                                    <TableHead>
+                                        <Button
+                                            variant="ghost"
+                                            className="group inline-flex"
+                                            onClick={() => onSortable('created_at')}
+                                        >
+                                            Dibuat pada
+                                            <span className="ml-2 flex-none rounded text-muted-foreground">
+                                                <IconArrowsDownUp className="size-4" />
+                                            </span>
+                                        </Button>
+                                    </TableHead>
+                                    <TableHead>Aksi</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
@@ -110,7 +188,9 @@ export default function Index(props) {
                                                             <IconTrash className="size-4" />
                                                         </Button>
                                                     }
-                                                    action={() => deleteAction(route('admin.faculties.destroy', faculty.slug))}
+                                                    action={() =>
+                                                        deleteAction(route('admin.faculties.destroy', faculty.id))
+                                                    }
                                                 />
                                             </div>
                                         </TableCell>
@@ -120,9 +200,10 @@ export default function Index(props) {
                         </Table>
                     )}
                 </CardContent>
-                <CardFooter className="flex flex-col items-center justify-between w-full py-3 border-t gap-y-2 lg:flex-row">
+                <CardFooter className="flex w-full flex-col items-center justify-between gap-y-2 border-t py-3 lg:flex-row">
                     <p className="text-sm text-muted-foreground">
-                        Menampilkan <span className="font-medium text-blue-600">{meta?.from ?? 0}</span> dari {meta?.total ?? 0} fakultas
+                        Menampilkan <span className="font-medium text-blue-600">{meta?.from ?? 0}</span> dari{' '}
+                        {meta?.total ?? 0} fakultas
                     </p>
                     <div className="overflow-x-auto">
                         {meta.has_pages && <PaginationTable meta={meta} links={links} />}

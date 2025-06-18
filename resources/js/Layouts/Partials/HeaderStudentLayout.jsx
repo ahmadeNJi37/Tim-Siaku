@@ -87,14 +87,20 @@ export default function HeaderStudentLayout({ auth, url }) {
                                                     className="data-[state-open]:bg-orange-500 data-[state-open]:text-white"
                                                 >
                                                     <Avatar className="size-8 rounded-lg">
-                                                        <AvatarImage src={auth?.avatar || "/images/User.png"} alt="Avatar"/>
+                                                        <AvatarImage
+                                                            src={auth?.avatar || '/images/User.png'}
+                                                            alt="Avatar"
+                                                        />
                                                         <AvatarFallback className="rounded-lg text-blue-600">
-                                                            {auth?.name.substring(0,1)}
+                                                            {auth?.name.substring(0, 1)}
                                                         </AvatarFallback>
                                                     </Avatar>
                                                     <div className="grid flex-1 text-left text-sm leading-tight">
                                                         <span className="truncate font-semibold">{auth?.name}</span>
-                                                        <span className="truncate text-xs">{auth?.student.student_number} {auth?.student?.classroom?.name}</span>
+                                                        <span className="truncate text-xs">
+                                                            {auth?.student.student_number}{' '}
+                                                            {auth?.student?.classroom?.name}
+                                                        </span>
                                                     </div>
                                                     <IconChevronCompactDown className="ml-auto size-4" />
                                                 </Button>
@@ -108,15 +114,19 @@ export default function HeaderStudentLayout({ auth, url }) {
                                                 <DropdownMenuLabel className="p-0 font-normal">
                                                     <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                                                         <Avatar className="size-8 rounded-lg">
-                                                            <AvatarImage src={auth?.avatar || "/Images/User.png"} alt="Avatar"/>
+                                                            <AvatarImage
+                                                                src={auth?.avatar || '/Images/User.png'}
+                                                                alt="Avatar"
+                                                            />
                                                             <AvatarFallback className="rounded-lg text-blue-600">
-                                                                {auth?.name.substring(0,1)}
+                                                                {auth?.name.substring(0, 1)}
                                                             </AvatarFallback>
                                                         </Avatar>
                                                         <div className="grid flex-1 text-left text-sm leading-tight">
                                                             <span className="truncate font-semibold">{auth?.name}</span>
                                                             <span className="truncate text-xs">
-                                                                {auth?.student.student_number} {auth?.student?.classroom?.name}
+                                                                {auth?.student.student_number}{' '}
+                                                                {auth?.student?.classroom?.name}
                                                             </span>
                                                         </div>
                                                     </div>
@@ -138,11 +148,9 @@ export default function HeaderStudentLayout({ auth, url }) {
                         <Disclosure.Panel className="lg:hidden">
                             <div className="space-y-1 px-2 pb-3 pt-2">
                                 <Disclosure.Button
-
                                     as="button"
                                     href={route('logout')}
                                     method="post"
-
                                     className={cn(
                                         url.startsWith('/student/dashboard')
                                             ? 'bg-blue-500 text-white'
@@ -205,21 +213,21 @@ export default function HeaderStudentLayout({ auth, url }) {
                                 <div className="flex items-center px-5">
                                     <div className="flex-shirnk-0">
                                         <Avatar>
-                                            <AvatarImage src={auth?.avatar || "/Images/User.png"} alt="Avatar"/>
-                                            <AvatarFallback>{auth?.name.substring(0,1)}</AvatarFallback>
+                                            <AvatarImage src={auth?.avatar || '/Images/User.png'} alt="Avatar" />
+                                            <AvatarFallback>{auth?.name.substring(0, 1)}</AvatarFallback>
                                         </Avatar>
                                     </div>
                                     <div className="ml-3">
                                         <div className="text-base font-medium text-white">{auth?.name}</div>
-                                        <div className="text-sm font-medium text-white">{auth?.student.student_number} {auth?.student?.classroom?.name}</div>
+                                        <div className="text-sm font-medium text-white">
+                                            {auth?.student.student_number} {auth?.student?.classroom?.name}
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="mt-3 space-y-1 px-2">
                                     <Disclosure.Button
-
                                         as="a"
                                         href="#"
-
                                         className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-blue-500"
                                     >
                                         Logout

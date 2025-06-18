@@ -27,9 +27,7 @@ export default function Login({ status, canResetPassword }) {
         <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2">
             <div className="flex flex-col px-6 py-4">
                 <ApplicationLogo
-
                     bgLogo="from-blue-400 via-blue-600 to-blue-800"
-
                     colorLogo="text-white"
                     colorText="text-white"
                 />
@@ -43,7 +41,6 @@ export default function Login({ status, canResetPassword }) {
                             )}
                             <h1 className="text-3xl font-bold text-foreground">Masuk</h1>
                             <p className="text-balance text-muted-foreground">
-
                                 Masukan email anda dibawah ini untuk masuk ke akun anda
                             </p>
                         </div>
@@ -64,7 +61,6 @@ export default function Login({ status, canResetPassword }) {
                                 <div className="grid gap-2">
                                     <Label htmlFor="password">password</Label>
                                     <div className="flex items-center">
-                                        
                                         <Input
                                             type="password"
                                             id="password"
@@ -95,9 +91,7 @@ export default function Login({ status, canResetPassword }) {
                                         variant="blue"
                                         size="xl"
                                         className="w-full"
-
                                         disabled={processing}
-
                                     >
                                         Masuk
                                     </Button>
@@ -108,14 +102,11 @@ export default function Login({ status, canResetPassword }) {
                 </div>
             </div>
 
-            <div className="lg:block hidden bg-muted">
+            <div className="hidden bg-muted lg:block">
                 <img src="/images/bg-login.webp" alt="login" className="h-full max-h-screen w-full object-cover" />
-
             </div>
         </div>
     );
 }
 
-
 Login.Layout = (page) => <GuestLayout children={page} title="Login" />;
-

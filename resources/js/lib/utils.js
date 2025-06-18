@@ -1,4 +1,4 @@
-import { router } from '@inertiajs/react'; 
+import { router } from '@inertiajs/react';
 import { clsx } from 'clsx';
 import { format, parseISO } from 'date-fns';
 import { id } from 'date-fns/locale';
@@ -43,7 +43,7 @@ export const formatToRupiah = (amount) => {
         style: 'currency',
         currency: 'IDR',
         minimumFractionDigits: 0,
-        maximumFractionDigits: 0,  // perbaikan typo 'maximumFractiontDigits'
+        maximumFractionDigits: 0, // perbaikan typo 'maximumFractiontDigits'
     });
 
     return formatter.format(amount);

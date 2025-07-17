@@ -19,6 +19,12 @@ import {
 } from '@tabler/icons-react';
 
 export default function Sidebar({ auth, url }) {
+    const name = auth?.user?.name ?? '-';
+    const avatar = auth?.user?.avatar ?? '/images/User.png';
+    const roleName = auth?.role_name ?? '-';
+    const roles = auth?.roles ?? [];
+    const avatarInitial = name.substring(0, 1);
+
     return (
         <nav className="flex flex-1 flex-col">
             <ul role="list" className="flex flex-1 flex-col">
@@ -28,17 +34,17 @@ export default function Sidebar({ auth, url }) {
                         className="mb-2 flex items-center gap-x-4 p-3 text-sm font-semibold leading-6 text-white hover:bg-blue-800"
                     >
                         <Avatar>
-                            <AvatarImage src={auth.avatar} />
-                            <AvatarFallback>{auth.name.substring(0, 1)}</AvatarFallback>
+                            <AvatarImage src={avatar} />
+                            <AvatarFallback>{avatarInitial}</AvatarFallback>
                         </Avatar>
                         <div className="flex flex-col text-left">
-                            <span className="truncate font-bold">{auth.name}</span>
-                            <span className="truncate">{auth.role_name}</span>
+                            <span className="truncate font-bold">{name}</span>
+                            <span className="truncate">{roleName}</span>
                         </div>
                     </Link>
                 </li>
 
-                {auth.roles.some((role) => ['Admin'].includes(role)) && (
+                {roles.includes('Admin') && (
                     <>
                         <NavLink
                             url="#"
@@ -87,13 +93,13 @@ export default function Sidebar({ auth, url }) {
                             icon={IconUserPentagon}
                         />
                         <NavLink
-                            url="#"
+                            url={route('admin.teachers.index')}
                             active={url.startsWith('/admin/teachers')}
                             title="Dosen"
                             icon={IconUsersGroup}
                         />
                         <NavLink
-                            url="#"
+                            url={route('admin.operators.index')}
                             active={url.startsWith('/admin/operators')}
                             title="Operator"
                             icon={IconUserCog}
@@ -101,13 +107,13 @@ export default function Sidebar({ auth, url }) {
 
                         <div className="px-5 py-3 text-xs font-medium text-white">Akademik</div>
                         <NavLink
-                            url="#"
+                            url={route('admin.courses.index')}
                             active={url.startsWith('/admin/courses')}
                             title="Mata Kuliah"
                             icon={IconBooks}
                         />
                         <NavLink
-                            url="#"
+                            url={route('admin.schedules.index')}
                             active={url.startsWith('/admin/schedules')}
                             title="Jadwal"
                             icon={IconCalendar}
@@ -115,7 +121,7 @@ export default function Sidebar({ auth, url }) {
 
                         <div className="px-5 py-3 text-xs font-medium text-white">Pembayaran</div>
                         <NavLink
-                            url="#"
+                            url={route('admin.fees.index')}
                             active={url.startsWith('/admin/fees')}
                             title="Uang Kuliah Tunggal"
                             icon={IconMoneybag}
@@ -129,10 +135,10 @@ export default function Sidebar({ auth, url }) {
                     </>
                 )}
 
-                {auth.roles.some((role) => ['Teacher'].includes(role)) && (
+                {roles.includes('Teacher') && (
                     <>
                         <NavLink
-                            url="#"
+                            url={route('teachers.dashboard')}
                             active={url.startsWith('/teachers/dashboard')}
                             title="Dashboard"
                             icon={IconLayout2}
@@ -140,7 +146,7 @@ export default function Sidebar({ auth, url }) {
 
                         <div className="px-5 py-3 text-xs font-medium text-white">Akademik</div>
                         <NavLink
-                            url="#"
+                            url={route('teachers.courses.index')}
                             active={url.startsWith('/teachers/courses')}
                             title="Mata Kuliah"
                             icon={IconBooks}
@@ -154,10 +160,10 @@ export default function Sidebar({ auth, url }) {
                     </>
                 )}
 
-                {auth.roles.some((role) => ['Operator'].includes(role)) && (
+                {roles.includes('Operator') && (
                     <>
                         <NavLink
-                            url="#"
+                            url={route('operators.dashboard')}
                             active={url.startsWith('/operators/dashboard')}
                             title="Dashboard"
                             icon={IconLayout2}
@@ -165,13 +171,13 @@ export default function Sidebar({ auth, url }) {
 
                         <div className="px-5 py-3 text-xs font-medium text-white">Pengguna</div>
                         <NavLink
-                            url="#"
+                            url={route('operators.students.index')}
                             active={url.startsWith('/operators/students')}
                             title="Mahasiswa"
                             icon={IconUserPentagon}
                         />
                         <NavLink
-                            url="#"
+                            url={route('operators.teachers.index')}
                             active={url.startsWith('/operators/teachers')}
                             title="Dosen"
                             icon={IconUsersGroup}
@@ -179,19 +185,19 @@ export default function Sidebar({ auth, url }) {
 
                         <div className="px-5 py-3 text-xs font-medium text-white">Akademik</div>
                         <NavLink
-                            url="#"
+                            url={route('operators.classrooms.index')}
                             active={url.startsWith('/operators/classrooms')}
                             title="Kelas"
                             icon={IconDoor}
                         />
                         <NavLink
-                            url="#"
+                            url={route('operators.courses.index')}
                             active={url.startsWith('/operators/courses')}
                             title="Mata Kuliah"
                             icon={IconBooks}
                         />
                         <NavLink
-                            url="#"
+                            url={route('operators.schedules.index')}
                             active={url.startsWith('/operators/schedules')}
                             title="Jadwal"
                             icon={IconCalendar}

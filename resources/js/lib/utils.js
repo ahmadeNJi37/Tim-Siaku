@@ -5,14 +5,32 @@ import { id } from 'date-fns/locale';
 import { toast } from 'sonner';
 import { twMerge } from 'tailwind-merge';
 
+/**
+ * Utility classNames merger with Tailwind support.
+ */
 export function cn(...inputs) {
     return twMerge(clsx(inputs));
 }
 
+/**
+ * Flash message handler with safe toast type validation.
+ */
 export function flashMessage(params) {
-    return params.props.flash_message;
+    const flash = params?.props?.flash_message ?? null;
+    if (!flash || !flash.message) return null;
+
+    const validTypes = ['success', 'error', 'info', 'warning'];
+    const type = validTypes.includes(flash.type) ? flash.type : 'info';
+
+    return {
+        type,
+        message: flash.message,
+    };
 }
 
+/**
+ * Safe delete action with flash toast feedback.
+ */
 export const deleteAction = (url, { closeModal, ...options } = {}) => {
     const defaultOptions = {
         preserveScroll: true,
@@ -27,28 +45,36 @@ export const deleteAction = (url, { closeModal, ...options } = {}) => {
                 closeModal();
             }
         },
-
         ...options,
     };
 
     router.delete(url, defaultOptions);
 };
 
+/**
+ * Format ISO date to Indonesian date string.
+ */
 export const formatDateIndo = (dataString) => {
     return format(parseISO(dataString), 'eeee, dd MMMM yyyy', { locale: id });
 };
 
+/**
+ * Format number to IDR (Indonesian Rupiah).
+ */
 export const formatToRupiah = (amount) => {
     const formatter = new Intl.NumberFormat('id-ID', {
         style: 'currency',
         currency: 'IDR',
         minimumFractionDigits: 0,
-        maximumFractionDigits: 0, // perbaikan typo 'maximumFractiontDigits'
+        maximumFractionDigits: 0,
     });
 
     return formatter.format(amount);
 };
 
+/**
+ * Constants for Study Plan Statuses
+ */
 export const STUDYPLANSTATUS = {
     PENDING: 'Pending',
     REJECT: 'Reject',
@@ -61,6 +87,9 @@ export const STUDYPLANSTATUSVARIANT = {
     [STUDYPLANSTATUS.APPROVED]: 'success',
 };
 
+/**
+ * Constants for Fee Statuses
+ */
 export const FEESTATUS = {
     PENDING: 'Tertunda',
     SUCCESS: 'Success',
@@ -73,6 +102,9 @@ export const FEESTATUSVARIANT = {
     [FEESTATUS.FAILED]: 'destructive',
 };
 
+/**
+ * Random fee code generator (6-character alphanumeric)
+ */
 export const feeCodeGenerator = () => {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
@@ -80,6 +112,5 @@ export const feeCodeGenerator = () => {
         const randomIndex = Math.floor(Math.random() * characters.length);
         result += characters[randomIndex];
     }
-
     return result;
 };

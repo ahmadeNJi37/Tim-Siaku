@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum SchedulDay: string
+enum ScheduleDay: string
 {
     case SENIN = 'Senin';
     case SELASA = 'Selasa';

@@ -1,4 +1,4 @@
-import AlertAction from '@/Components/AlertAction';
+    import AlertAction from '@/Components/AlertAction';
 import EmptyState from '@/Components/EmptyState';
 import HeaderTitle from '@/Components/HeaderTitle';
 import PaginationTable from '@/Components/PaginationTable';

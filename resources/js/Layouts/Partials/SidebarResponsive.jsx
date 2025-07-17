@@ -69,13 +69,13 @@ export default function SidebarResponsive({ auth, url }) {
                             icon={IconUserPentagon}
                         />
                         <NavLink
-                            url="#"
+                            url={route('admin.teachers.index')}
                             active={url.startsWith('/admin/teachers')}
                             title="Dosen"
                             icon={IconUsersGroup}
                         />
                         <NavLink
-                            url="#"
+                            url={route('admin.operators.index')}
                             active={url.startsWith('/admin/operators')}
                             title="Operator"
                             icon={IconUserCog}
@@ -83,13 +83,13 @@ export default function SidebarResponsive({ auth, url }) {
 
                         <div className="px-5 py-3 text-xs font-medium text-white">Akademik</div>
                         <NavLink
-                            url="#"
+                            url={route('admin.courses.index')}
                             active={url.startsWith('/admin/courses')}
                             title="Mata Kuliah"
                             icon={IconBooks}
                         />
                         <NavLink
-                            url="#"
+                            url={route('admin.schedules.index')}
                             active={url.startsWith('/admin/schedules')}
                             title="Jadwal"
                             icon={IconCalendar}
@@ -97,7 +97,7 @@ export default function SidebarResponsive({ auth, url }) {
 
                         <div className="px-5 py-3 text-xs font-medium text-white">Pembayaran</div>
                         <NavLink
-                            url="#"
+                            url={route('admin.fees.index')}
                             active={url.startsWith('/admin/fees')}
                             title="Uang Kuliah Tunggal"
                             icon={IconMoneybag}
@@ -114,7 +114,7 @@ export default function SidebarResponsive({ auth, url }) {
                 {auth.roles.some((role) => ['Teacher'].includes(role)) && (
                     <>
                         <NavLink
-                            url="#"
+                            url={route('teachers.dashboard')}
                             active={url.startsWith('/teachers/dashboard')}
                             title="Dashboard"
                             icon={IconLayout2}
@@ -122,7 +122,7 @@ export default function SidebarResponsive({ auth, url }) {
 
                         <div className="px-5 py-3 text-xs font-medium text-white">Akademik</div>
                         <NavLink
-                            url="#"
+                            url={route('teachers.courses.index')}
                             active={url.startsWith('/teachers/courses')}
                             title="Mata Kuliah"
                             icon={IconBooks}
@@ -139,7 +139,7 @@ export default function SidebarResponsive({ auth, url }) {
                 {auth.roles.some((role) => ['Operator'].includes(role)) && (
                     <>
                         <NavLink
-                            url="#"
+                            url={route('operators.dashboard')}
                             active={url.startsWith('/operators/dashboard')}
                             title="Dashboard"
                             icon={IconLayout2}
@@ -147,13 +147,13 @@ export default function SidebarResponsive({ auth, url }) {
 
                         <div className="px-5 py-3 text-xs font-medium text-white">Pengguna</div>
                         <NavLink
-                            url="#"
+                            url={route('operators.students.index')}
                             active={url.startsWith('/operators/students')}
                             title="Mahasiswa"
                             icon={IconUserPentagon}
                         />
                         <NavLink
-                            url="#"
+                            url={route('operators.teachers.index')}
                             active={url.startsWith('/operators/teachers')}
                             title="Dosen"
                             icon={IconUsersGroup}
@@ -161,19 +161,19 @@ export default function SidebarResponsive({ auth, url }) {
 
                         <div className="px-5 py-3 text-xs font-medium text-white">Akademik</div>
                         <NavLink
-                            url="#"
+                            url={route('operators.classrooms.index')}
                             active={url.startsWith('/operators/classrooms')}
                             title="Kelas"
                             icon={IconDoor}
                         />
                         <NavLink
-                            url="#"
+                            url={route('operators.courses.index')}
                             active={url.startsWith('/operators/courses')}
                             title="Mata Kuliah"
                             icon={IconBooks}
                         />
                         <NavLink
-                            url="#"
+                            url={route('operators.schedules.index')}
                             active={url.startsWith('/operators/schedules')}
                             title="Jadwal"
                             icon={IconCalendar}

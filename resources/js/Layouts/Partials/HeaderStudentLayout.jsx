@@ -16,6 +16,12 @@ import { Link } from '@inertiajs/react';
 import { IconChevronCompactDown, IconLayoutSidebar, IconLogout2, IconX } from '@tabler/icons-react';
 
 export default function HeaderStudentLayout({ auth, url }) {
+    const name = auth?.user?.name ?? '-';
+    const studentNumber = auth?.student?.student_number ?? '-';
+    const classroomName = auth?.student?.classroom?.name ?? '-';
+    const avatarInitial = name.substring(0, 1) ?? '-';
+    const avatarImage = auth?.user?.avatar ?? '/images/User.png';
+
     return (
         <>
             <Disclosure
@@ -35,7 +41,6 @@ export default function HeaderStudentLayout({ auth, url }) {
                                 </div>
 
                                 <div className="flex lg:hidden">
-                                    {/* {mobile} */}
                                     <Disclosure.Button className="relative inline-flex items-center justify-center rounded-xl p-2 text-white hover:text-white focus:outline-none">
                                         <span className="absolute inset-0.5" />
                                         {open ? (
@@ -51,28 +56,28 @@ export default function HeaderStudentLayout({ auth, url }) {
                                         <div className="hidden lg:mx-10 lg:block">
                                             <div className="flex space-x-4">
                                                 <NavigationMenu
-                                                    url="#"
-                                                    active={url.startsWith('students/dashboard')}
+                                                    url={route('students.dashboard')}
+                                                    active={url.startsWith('/students/dashboard')}
                                                     title="Dashboard"
                                                 />
                                                 <NavigationMenu
-                                                    url="#"
-                                                    active={url.startsWith('students/schedules')}
+                                                    url={route('students.schedules.index')}
+                                                    active={url.startsWith('/students/schedules')}
                                                     title="Jadwal"
                                                 />
                                                 <NavigationMenu
-                                                    url="#"
-                                                    active={url.startsWith('students/study-plans')}
+                                                    url={route('students.study-plans.index')}
+                                                    active={url.startsWith('/students/study-plans')}
                                                     title="Kartu Rencana Study"
                                                 />
                                                 <NavigationMenu
                                                     url="#"
-                                                    active={url.startsWith('students/study-results')}
+                                                    active={url.startsWith('/students/study-results')}
                                                     title="Kartu Hasil Studi"
                                                 />
                                                 <NavigationMenu
-                                                    url="#"
-                                                    active={url.startsWith('students/fees')}
+                                                    url={route('students.fees.index')}
+                                                    active={url.startsWith('/students/fees')}
                                                     title="Pembayaran"
                                                 />
                                             </div>
@@ -87,19 +92,15 @@ export default function HeaderStudentLayout({ auth, url }) {
                                                     className="data-[state-open]:bg-orange-500 data-[state-open]:text-white"
                                                 >
                                                     <Avatar className="size-8 rounded-lg">
-                                                        <AvatarImage
-                                                            src={auth?.avatar || '/images/User.png'}
-                                                            alt="Avatar"
-                                                        />
+                                                        <AvatarImage src={avatarImage} alt="Avatar" />
                                                         <AvatarFallback className="rounded-lg text-blue-600">
-                                                            {auth?.name.substring(0, 1)}
+                                                            {avatarInitial}
                                                         </AvatarFallback>
                                                     </Avatar>
                                                     <div className="grid flex-1 text-left text-sm leading-tight">
-                                                        <span className="truncate font-semibold">{auth?.name}</span>
+                                                        <span className="truncate font-semibold">{name}</span>
                                                         <span className="truncate text-xs">
-                                                            {auth?.student.student_number}{' '}
-                                                            {auth?.student?.classroom?.name}
+                                                            {studentNumber} {classroomName}
                                                         </span>
                                                     </div>
                                                     <IconChevronCompactDown className="ml-auto size-4" />
@@ -114,19 +115,15 @@ export default function HeaderStudentLayout({ auth, url }) {
                                                 <DropdownMenuLabel className="p-0 font-normal">
                                                     <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                                                         <Avatar className="size-8 rounded-lg">
-                                                            <AvatarImage
-                                                                src={auth?.avatar || '/Images/User.png'}
-                                                                alt="Avatar"
-                                                            />
+                                                            <AvatarImage src={avatarImage} alt="Avatar" />
                                                             <AvatarFallback className="rounded-lg text-blue-600">
-                                                                {auth?.name.substring(0, 1)}
+                                                                {avatarInitial}
                                                             </AvatarFallback>
                                                         </Avatar>
                                                         <div className="grid flex-1 text-left text-sm leading-tight">
-                                                            <span className="truncate font-semibold">{auth?.name}</span>
+                                                            <span className="truncate font-semibold">{name}</span>
                                                             <span className="truncate text-xs">
-                                                                {auth?.student.student_number}{' '}
-                                                                {auth?.student?.classroom?.name}
+                                                                {studentNumber} {classroomName}
                                                             </span>
                                                         </div>
                                                     </div>
@@ -145,12 +142,12 @@ export default function HeaderStudentLayout({ auth, url }) {
                             </div>
                         </div>
 
+                        {/* Mobile menu */}
                         <Disclosure.Panel className="lg:hidden">
                             <div className="space-y-1 px-2 pb-3 pt-2">
                                 <Disclosure.Button
                                     as="button"
-                                    href={route('logout')}
-                                    method="post"
+                                    href={route('students.dashboard')}
                                     className={cn(
                                         url.startsWith('/student/dashboard')
                                             ? 'bg-blue-500 text-white'
@@ -162,9 +159,9 @@ export default function HeaderStudentLayout({ auth, url }) {
                                 </Disclosure.Button>
                                 <Disclosure.Button
                                     as="a"
-                                    href="#"
+                                    href={route('students.schedules.index')}
                                     className={cn(
-                                        url.startsWith('/student/shedules')
+                                        url.startsWith('/student/schedules')
                                             ? 'bg-blue-500 text-white'
                                             : 'text-white hover:bg-blue-500',
                                         'block rounded-md px-3 py-2 text-base font-medium',
@@ -198,7 +195,7 @@ export default function HeaderStudentLayout({ auth, url }) {
                                 </Disclosure.Button>
                                 <Disclosure.Button
                                     as="a"
-                                    href="#"
+                                    href={route('students.fees.index')}
                                     className={cn(
                                         url.startsWith('/student/fees')
                                             ? 'bg-blue-500 text-white'
@@ -211,16 +208,14 @@ export default function HeaderStudentLayout({ auth, url }) {
                             </div>
                             <div className="pb-3 pt-4">
                                 <div className="flex items-center px-5">
-                                    <div className="flex-shirnk-0">
-                                        <Avatar>
-                                            <AvatarImage src={auth?.avatar || '/Images/User.png'} alt="Avatar" />
-                                            <AvatarFallback>{auth?.name.substring(0, 1)}</AvatarFallback>
-                                        </Avatar>
-                                    </div>
+                                    <Avatar>
+                                        <AvatarImage src={avatarImage} alt="Avatar" />
+                                        <AvatarFallback>{avatarInitial}</AvatarFallback>
+                                    </Avatar>
                                     <div className="ml-3">
-                                        <div className="text-base font-medium text-white">{auth?.name}</div>
+                                        <div className="text-base font-medium text-white">{name}</div>
                                         <div className="text-sm font-medium text-white">
-                                            {auth?.student.student_number} {auth?.student?.classroom?.name}
+                                            {studentNumber} {classroomName}
                                         </div>
                                     </div>
                                 </div>

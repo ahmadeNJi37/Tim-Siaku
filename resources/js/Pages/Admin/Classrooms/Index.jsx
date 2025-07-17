@@ -12,7 +12,7 @@ import UseFilter from '@/hooks/UseFilter';
 import AppLayout from '@/layouts/AppLayout';
 import { formatDateIndo } from '@/lib/utils';
 import { Link, router } from '@inertiajs/react';
-import { IconArrowsDownUp, IconDoor, IconPencil, IconPlus, IconRefresh, IconTrash } from '@tabler/icons-react';
+import { IconArrowsDownUp, IconDoor, IconPencil, IconPlus, IconRefresh, IconTrash, IconUsersGroup } from '@tabler/icons-react';
 import { useState } from 'react';
 
 export default function Index(props) {
@@ -188,25 +188,31 @@ export default function Index(props) {
                                         <TableCell>
                                             {classroom.created_at ? formatDateIndo(classroom.created_at) : '-'}
                                         </TableCell>
-                                        <TableCell>
+                                            <TableCell>
                                             <div className="flex items-center gap-x-1">
+                                                <Button variant="purple" size="sm" asChild>
+                                                <Link href={route('admin.classroom-students.index', classroom.slug)}>
+                                                    <IconUsersGroup className="size-4" />
+                                                </Link>
+                                                </Button>
                                                 <Button variant="blue" size="sm" asChild>
-                                                    <Link href={route('admin.classrooms.edit', classroom.slug)}>
-                                                        <IconPencil className="size-4" />
-                                                    </Link>
+                                                <Link href={route('admin.classrooms.edit', classroom.slug)}>
+                                                    <IconPencil className="size-4" />
+                                                </Link>
                                                 </Button>
                                                 <AlertAction
-                                                    trigger={
-                                                        <Button variant="red" size="sm">
-                                                            <IconTrash className="size-4" />
-                                                        </Button>
-                                                    }
-                                                    action={() =>
-                                                        deleteAction(route('admin.classrooms.destroy', classroom.slug))
-                                                    }
+                                                trigger={
+                                                    <Button variant="red" size="sm">
+                                                    <IconTrash className="size-4" />
+                                                    </Button>
+                                                }
+                                                action={() =>
+                                                    deleteAction(route('admin.classrooms.destroy', classroom.slug))
+                                                }
                                                 />
                                             </div>
-                                        </TableCell>
+                                            </TableCell>
+
                                     </TableRow>
                                 ))}
                             </TableBody>

@@ -8,7 +8,7 @@ use App\Models\Classroom;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class attendance extends Model
+class Attendance extends Model
 {
     protected $fillable = [
         'course_id',

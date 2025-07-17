@@ -11,29 +11,26 @@ use Inertia\Response;
 
 class DashboardTeacherController extends Controller
 {
-    public function __invoke(): Response
-    {
-        return inertia('Teachers/Dashboard', [
-            'page_settings' => [
-                'title' => 'Dashboard',
-                'subtitle' => 'Menampilkan semua statistik pada platform ini',
-            ],
-            'count' => [
-                // Hitung jumlah matakuliah milik guru ini
-                'courses' => Course::query()
-                ->where('teacher_id', auth()->user()->teacher->id)
-                ->count(),
+   public function __invoke(): \Inertia\Response
+{
+    $user = auth()->user()->load('teacher');
+    $teacher = $user->teacher;
 
-                // Hitung jumlah jadwal milik guru ini lalu ambil distinct classroom_id-nya
-                'classrooms' => Classroom::query()
-                ->whereHas('schedules.course', fn ($query) => $query->where('teacher_id', auth()->user()->teacher->id))
-                ->count(),
-
-                // Hitung jumlah jadwal mengajar guru ini
-                'schedules' => Schedule::query()
-                ->whereHas('course', fn ($query) => $query->where('teacher_id', auth()->user()->teacher->id))
-                ->count(),
-            ],
-        ]);
+    // 🛑 Jika relasi teacher tidak ditemukan
+    if (!$teacher) {
+        abort(403, 'Akun Anda belum terhubung dengan data guru.');
     }
+
+    return inertia('Teachers/Dashboard', [
+        'page_setting' => [
+            'title' => 'Dashboard',
+            'subtitle' => 'Menampilkan semua statistik pada platform ini',
+        ],
+        'count' => [
+            'courses' => Course::where('teacher_id', $teacher->id)->count(),
+            'classrooms' => Classroom::whereHas('schedules.course', fn ($q) => $q->where('teacher_id', $teacher->id))->count(),
+            'schedules' => Schedule::whereHas('course', fn ($q) => $q->where('teacher_id', $teacher->id))->count(),
+        ],
+    ]);
+}
 }

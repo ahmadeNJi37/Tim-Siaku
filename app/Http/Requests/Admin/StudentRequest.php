@@ -16,13 +16,9 @@ class StudentRequest extends FormRequest
     }
 
     protected function prepareForValidation(): void
-    {
-        // Ambil Student berdasarkan student_number dari route, untuk kebutuhan validasi update
-        $studentNumber = $this->route('student');
-        if ($studentNumber) {
-            $this->studentModel = Student::where('student_number', $studentNumber)->with('user')->first();
-        }
-    }
+{
+    $this->studentModel = $this->route('student'); // langsung ambil model dari binding
+}
 
     public function rules(): array
     {
@@ -39,18 +35,18 @@ class StudentRequest extends FormRequest
             'password'        => [$this->isMethod('post') ? 'required' : 'nullable', 'string', 'min:6'],
             'avatar'          => ['nullable', 'image', 'max:2048'],
 
-            'faculty_id'      => ['required', 'exists:faculties,id'],
-            'department_id'   => ['required', 'exists:departments,id'],
-            'classroom_id'    => ['required', 'exists:classrooms,id'],
-            'fee_group_id'    => ['required', 'exists:fee_groups,id'],
+            'faculty_id'      => ['required', 'numeric', 'exists:faculties,id'],
+            'department_id'   => ['required', 'numeric', 'exists:departments,id'],
+            'classroom_id'    => ['required', 'numeric', 'exists:classrooms,id'],
+            'fee_group_id'    => ['required', 'numeric', 'exists:fee_groups,id'],
             'student_number'  => [
                 'required',
                 'string',
                 'max:30',
                 Rule::unique('students', 'student_number')->ignore($this->studentModel?->id),
             ],
-            'semester'        => ['required', 'integer', 'min:1'],
-            'batch'           => ['required', 'integer', 'min:2000', 'max:' . now()->year],
+            'semester'        => ['required', 'numeric', 'min:1'],
+            'batch'           => ['required', 'numeric', 'min:2000', 'max:' . now()->year],
         ];
     }
 
@@ -63,6 +59,7 @@ class StudentRequest extends FormRequest
             'password.required'       => 'Password wajib diisi saat tambah mahasiswa.',
             'faculty_id.required'     => 'Fakultas wajib dipilih.',
             'department_id.required'  => 'Program Studi wajib dipilih.',
+            'classroom_id.required'   => 'Kelas wajib dipilih.',
             'fee_group_id.required'   => 'Golongan UKT wajib dipilih.',
             'student_number.required' => 'Nomor pokok wajib diisi.',
             'semester.required'       => 'Semester wajib diisi.',

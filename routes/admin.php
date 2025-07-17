@@ -5,9 +5,15 @@ use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\FacultyController;
 use App\Http\Controllers\Admin\AcademicYearController;
 use App\Http\Controllers\Admin\ClassroomController;
+use App\Http\Controllers\Admin\ClassroomStudentController;
+use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\FeeGroupController;
+use App\Http\Controllers\Admin\OperatorController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\TeacherController;
+use App\Http\Controllers\Admin\ScheduleController;
+use App\Http\Controllers\Admin\FeeController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->middleware(['auth', 'role:Admin'])->group(function () {
@@ -76,4 +82,48 @@ Route::prefix('admin')->middleware(['auth', 'role:Admin'])->group(function () {
     Route::put('students/{student:student_number}', 'update')->name('admin.students.update');
     Route::delete('students/{student:student_number}', 'destroy')->name('admin.students.destroy');
     });
+
+    Route::controller(ClassroomStudentController::class)->group(function () {
+    Route::get('classrooms/students/{classroom:slug}', 'index')->name('admin.classroom-students.index');
+    Route::put('classrooms/students/{classroom:slug}/sync', 'sync')->name('admin.classroom-students.sync');
+    Route::delete('classrooms/{classroom:slug}/students/{student:student_number}', 'destroy')->name('admin.classroom-students.destroy');
+});
+
+Route::controller(TeacherController::class)->group(function () {
+        Route::get('teachers', 'index')->name('admin.teachers.index');
+        Route::get('teachers/create', 'create')->name('admin.teachers.create');
+        Route::post('teachers', 'store')->name('admin.teachers.store'); // ✅ diperbaiki
+        Route::get('teachers/{teacher:teacher_number}/edit', 'edit')->name('admin.teachers.edit');
+        Route::put('teachers/{teacher:teacher_number}', 'update')->name('admin.teachers.update');
+        Route::delete('teachers/{teacher:teacher_number}', 'destroy')->name('admin.teachers.destroy');
+        });
+
+     Route::controller(OperatorController::class)->group(function () {
+        Route::get('operators', 'index')->name('admin.operators.index');
+        Route::get('operators/create', 'create')->name('admin.operators.create');
+        Route::post('operators', 'store')->name('admin.operators.store'); // ✅ diperbaiki
+        Route::get('operators/{operator:employee_number}/edit', 'edit')->name('admin.operators.edit');
+        Route::put('operators/{operator:employee_number}', 'update')->name('admin.operators.update');
+        Route::delete('operators/{operator:employee_number}', 'destroy')->name('admin.operators.destroy');
+        });
+     Route::controller(CourseController::class)->group(function () {
+        Route::get('courses', 'index')->name('admin.courses.index');
+        Route::get('courses/create', 'create')->name('admin.courses.create');
+        Route::post('courses', 'store')->name('admin.courses.store'); // ✅ diperbaiki
+        Route::get('courses/{course:code}/edit', 'edit')->name('admin.courses.edit');
+        Route::put('courses/{course:code}', 'update')->name('admin.courses.update');
+        Route::delete('courses/{course:code}', 'destroy')->name('admin.courses.destroy');
+        });
+
+     Route::controller(ScheduleController::class)->group(function () {
+        Route::get('schedules', 'index')->name('admin.schedules.index');
+        Route::get('schedules/create', 'create')->name('admin.schedules.create');
+        Route::post('schedules', 'store')->name('admin.schedules.store'); // ✅ diperbaiki
+        Route::get('schedules/{schedule}/edit', 'edit')->name('admin.schedules.edit');
+        Route::put('schedules/{schedule}', 'update')->name('admin.schedules.update');
+        Route::delete('schedules/{schedule}', 'destroy')->name('admin.schedules.destroy');
+        });
+
+    Route::get('fees', FeeController::class)->name('admin.fees.index');
+
 });

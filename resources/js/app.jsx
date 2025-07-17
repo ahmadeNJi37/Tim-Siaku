@@ -9,16 +9,19 @@ const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.jsx`, import.meta.glob('./Pages/**/*.jsx')),
+    resolve: (name) =>
+        resolvePageComponent(
+            `./Pages/${name.replace(/\./g, '/')}.jsx`, // ⬅️ penting: ubah titik jadi slash
+            import.meta.glob('./Pages/**/*.jsx')
+        ),
     setup({ el, App, props }) {
         if (import.meta.env.SSR) {
             hydrateRoot(el, <App {...props} />);
-            return;
+        } else {
+            createRoot(el).render(<App {...props} />);
         }
-
-        createRoot(el).render(<App {...props} />);
     },
     progress: {
-        color: '#4B5563',
+        color: '#4B5563', // warna progress bar inertia
     },
 });

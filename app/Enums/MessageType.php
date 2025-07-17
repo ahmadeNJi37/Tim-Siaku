@@ -5,7 +5,7 @@ namespace App\Enums;
 
  {
     case CREATED = 'Berhasil menambahkan';
-    case UPDATE = 'Berhasil memperbarui';
+    case UPDATED = 'Berhasil memperbarui';
     case DELETED = 'Berhasil menghapus';
     case ERROR = 'Terjadi kesalahan. Silahkan coba lagi nanti';                                                                                                                                                                                                                                                                                                                                                                         
 
